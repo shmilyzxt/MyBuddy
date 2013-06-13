@@ -1,0 +1,42 @@
+<Profile>
+  <Name>Act 4 - Phase 1 - Stage 1 [A queda do paraiso celestial] by togwar</Name>
+    <KillMonsters>True</KillMonsters>
+  <PickupLoot>True</PickupLoot>
+  <GameParams quest="87700" step="-1" act="A4" difficulty="Inferno" resumeFromSave="False" isPrivate="True" numGames="-1"  />
+  <Order>
+	
+    <!-- Walk to NPC 
+	<WriteReport />-->
+    
+    <MoveTo questId="112498" stepId="2" x="349.3365" y="695.4487" z="-14.75308" name="waypoint1 - path to NPC" />
+	
+	<LogMessage message="Wait for NPC to activate" />
+	<!-- Wait for NPC to activate -->
+	<WaitTimer questId="112498" stepId="2" waitTime="21000" />  
+    
+	<LogMessage message="Talk to NPC" />
+	<!-- Talk to NPC -->
+	<TalkTo questId="112498" stepId="2" actorId="6353" x="348.6043" y="692.6285" z="-14.81165" skipConversation="True" levelArea="182944" />
+
+	<LogMessage message="use portal -->" />
+	<!-- use portal -->
+	<UseObject questId="112498" stepId="17" x="356.0934" y="662.9449" z="-12.42205" isPortal="True" destinationWorldId="109143" actorId="182963" />
+
+	<LogMessage message="Wait for cut scene as skip cut scene is not working. -->" />
+	<!-- Wait for cut scene as skip cut scene is not working. -->
+	<WaitTimer questId="112498" stepId="15" waitTime="27000" /> 
+	<MoveTo questId="112498" stepId="15" x="355.1049" y="567.6835" z="-14.8" name="move for combat" /> 
+
+	
+    <!-- leave the game!-->
+	<While condition="CurrentLevelAreaId == 109149">
+		<If condition="IsActiveQuest(113910) and IsActiveQuestStep(66) and CurrentWorldId == 109143">
+			<LeaveGame reason="Run finished...lets go again" />
+		</If>
+	</While>
+  </Order>
+ </Profile>
+
+
+
+

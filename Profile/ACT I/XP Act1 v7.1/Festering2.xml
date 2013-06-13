@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Profile xmlns="http://tempuri.org/ProfileSchema.xsd" xmlns:xsi="http://tempuri.org/ProfileSchema.xsd">
+  <Name>Fallen Festering Woods 2</Name>
+  <GameParams quest="136656" step="-1" act="A1" difficulty="Inferno" resumeFromSave="False" isPrivate="True" numGames="-1" />
+  <KillMonsters>True</KillMonsters>
+  <PickupLoot>True</PickupLoot>
+  <Order>
+
+    <!--Check to see if your still in the Woods-->
+
+    <If condition="not ZetaDia.CurrentLevelAreaId == 19953">
+      <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      <UseTownPortal questId="1" />
+      <WaitTimer questId="1" stepId="1" waitTime="1000" />
+    </If>
+
+    <While condition="ZetaDia.CurrentLevelAreaId == 19947">
+      <LogMessage message="In Town?" />
+      <UseWaypoint questId="1" stepId="1" actorId="6442" x="2981.730" y="2835.009" z="24.908" waypointNumber="9" />
+      <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      <LogMessage message="Fallen Festering Woods" />
+    </While>
+
+    <!--Festering v6.1-->
+
+    <While condition="ZetaDia.CurrentLevelAreaId == 19953">
+      <!--Rest 1-->
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="407" y="717" z="20" unsafeRandomDistance="5" name="Rest" />
+      <If condition="ActorExistsAt(176008, 401, 666, 16, 150)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="436" y="705" z="20" unsafeRandomDistance="5" name="R1-1" />
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="429" y="678" z="16" unsafeRandomDistance="5" name="R1-2" />
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="411" y="675" z="16" unsafeRandomDistance="5" name="R1-3" />
+        <UseObject questId="1" stepId="1" actorId="176008" isPortal="True" destinationWorldId="60393" />
+        <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      </If>
+      <!--Rest 2-->
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="550" y="720" z="20" unsafeRandomDistance="5" name="Rest" />
+      <If condition="ActorExistsAt(176008, 522, 666, 16, 150)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="530" y="697" z="20" unsafeRandomDistance="5" name="R2-1" />
+        <UseObject questId="1" stepId="1" actorId="176008" isPortal="True" destinationWorldId="60393" />
+        <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      </If>
+      <!--Rest 3-->
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="228" y="665" z="20" unsafeRandomDistance="5" name="Rest" />
+      <If condition="ActorExistsAt(176008, 285, 666, 16, 150)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="279" y="724" z="20" unsafeRandomDistance="5" name="R3-1" />
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="305" y="714" z="20" unsafeRandomDistance="5" name="R3-2" />
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="313" y="679" z="16" unsafeRandomDistance="5" name="R3-3" />
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="288" y="678" z="16" unsafeRandomDistance="5" name="R3-4" />
+        <UseObject questId="1" stepId="1" actorId="176008" isPortal="True" destinationWorldId="60393" />
+        <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      </If>
+    </While>
+
+    <!--v^v^v^v^v^v^v-->
+
+    <LoadProfile profile="Rest.xml" nodelay="true" />
+  </Order>
+</Profile>

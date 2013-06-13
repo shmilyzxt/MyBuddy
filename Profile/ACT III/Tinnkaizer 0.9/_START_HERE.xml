@@ -1,0 +1,9 @@
+<Profile>
+    <Name>Tinnkaizer 0.9 - Starter</Name>
+    <KillMonsters>True</KillMonsters>
+    <PickupLoot>True</PickupLoot>
+    <GameParams quest="101758" step="1" act="A3" difficulty="Inferno" resumeFromSave="True" isPrivate="True" numGames="-1"  />
+    <Order>
+        <LoadProfile profile="Tinnkaizer.xml" />
+    </Order>
+</Profile>

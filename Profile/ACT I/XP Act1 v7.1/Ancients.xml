@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Profile xmlns="http://tempuri.org/ProfileSchema.xsd" xmlns:xsi="http://tempuri.org/ProfileSchema.xsd">
+  <Name>Fallen Crypt of the Ancients</Name>
+  <GameParams quest="136656" step="-1" act="A1" difficulty="Inferno" resumeFromSave="False" isPrivate="True" numGames="-1" />
+  <KillMonsters>True</KillMonsters>
+  <PickupLoot>True</PickupLoot>
+  <Order>
+
+    <!--Clearing Ancients-->
+
+    <If condition="ZetaDia.CurrentLevelAreaId == 60397">
+      <If condition="ActorExistsAt(Me.ActorSNO, 276, 190, -5, 75)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="25" x="300" y="234" z="-9" unsafeRandomDistance="5" name="1" />
+      </If>
+      <If condition="ActorExistsAt(Me.ActorSNO, 300, 234, -9, 75)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="25" x="275" y="301" z="-17" unsafeRandomDistance="5" name="2" />
+      </If>
+      <If condition="ActorExistsAt(Me.ActorSNO, 275, 301, -17, 75)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="25" x="189" y="281" z="-17" unsafeRandomDistance="5" name="3" />
+      </If>
+      <If condition="ActorExistsAt(Me.ActorSNO, 189, 281, -17, 75)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="25" x="157" y="332" z="-17" unsafeRandomDistance="5" name="4" />
+      </If>
+      <If condition="ActorExistsAt(Me.ActorSNO, 157, 332, -17, 75)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="25" x="305" y="398" z="-38" unsafeRandomDistance="5" name="5" />
+      </If>
+      <If condition="ActorExistsAt(Me.ActorSNO, 305, 398, -38, 75)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="25" x="234" y="354" z="-17" unsafeRandomDistance="5" name="6" />
+      </If>
+      <If condition="ActorExistsAt(Me.ActorSNO, 234, 354, -17, 75)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="25" x="275" y="295" z="-17" unsafeRandomDistance="5" name="7" />
+      </If>
+      <If condition="ActorExistsAt(Me.ActorSNO, 275, 295, -17, 75)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="25" x="286" y="208" z="-7" unsafeRandomDistance="5" name="Exit" />
+      </If>
+      <UseObject questId="136656" stepId="1" actorId="176008" isPortal="True" destinationWorldId="71150" />
+      <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      <LoadProfile profile="Festering2.xml" nodelay="true" />
+    </If>
+
+    <If condition="not ZetaDia.CurrentLevelAreaId == 60397">
+      <LoadProfile profile="Festering2.xml" nodelay="true" />
+    </If>
+
+    <!--v^v^v^v^v^v^v-->
+
+  </Order>
+</Profile>

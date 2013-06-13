@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Profile xmlns="http://tempuri.org/ProfileSchema.xsd" xmlns:xsi="http://tempuri.org/ProfileSchema.xsd">
+  <Name>Fallen Warrior's Rest</Name>
+  <GameParams quest="136656" step="-1" act="A1" difficulty="Inferno" resumeFromSave="False" isPrivate="True" numGames="-1" />
+  <KillMonsters>True</KillMonsters>
+  <PickupLoot>True</PickupLoot>
+  <Order>
+
+    <!--Clearing Warrior's Rest-->
+
+    <If condition="ZetaDia.CurrentLevelAreaId == 60396">
+      <If condition="ActorExistsAt(Me.ActorSNO, 413, 255, 0.1, 50)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="25" x="211.7075" y="359.9952" z="0.1000257" unsafeRandomDistance="3" name="1" />
+      </If>
+      <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      <UseTownPortal questId="1" />
+      <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      <LoadProfile profile="Misery.xml" nodelay="true" />
+    </If>
+
+    <If condition="not ZetaDia.CurrentLevelAreaId == 60396">
+      <LoadProfile profile="Misery.xml" nodelay="true" />
+    </If>
+
+    <!--v^v^v^v^v^v^v-->
+
+  </Order>
+</Profile>

@@ -1,0 +1,45 @@
+<!-- Original script by: Swaggasauruz -->
+<!-- Modified to work with patch 1.0.7 by: Nazair -->
+
+<Profile>
+	<Name>[Act I - Hell] Crypt of the Ancients 1.2.1</Name>
+	<GameParams quest="72738" step="12" act="A1" difficulty="Hell" resumeFromSave="True" isPrivate="True" numGames="-1"  />
+	<KillMonsters>True</KillMonsters>
+	<PickupLoot>True</PickupLoot>
+	<Order>
+	
+	<!-- In town, use portal to checkpoint -->
+    	<If condition="CurrentLevelAreaId == 19947">
+		<LogMessage questId="72738" stepId="12" output="Using portal to Crypt of the Ancients" />
+		<TakeTownPortal questId="72738" stepId="12" />
+		<WaitTimer questId="72738" stepId="12" waitTime="1000" />
+    	</If>
+	
+	<!-- Crypt of the Ancients -->
+	<If condition="CurrentWorldId == 60394 and ActorExistsAt(Me.ActorSNO, 280, 194, -6, 300)">
+		<LogMessage questId="72738" stepId="12" output="Exploring location" />
+		<MoveTo questId="72738" stepId="12" x="303.1548" y="247.9023" z="-10.14442" pathPrecision="5" />
+		<MoveTo questId="72738" stepId="12" x="272.1622" y="305.438" z="-16.9488" pathPrecision="5" />
+		<MoveTo questId="72738" stepId="12" x="191.0594" y="273.4154" z="-16.94353" pathPrecision="5" />
+		<MoveTo questId="72738" stepId="12" x="164.309" y="333.5832" z="-16.94147" pathPrecision="5" />
+		<MoveTo questId="72738" stepId="12" x="253.1968" y="378.8382" z="-17.27255" pathPrecision="5" />
+		<MoveTo questId="72738" stepId="12" x="304.4234" y="360.1072" z="-37.90237" pathPrecision="5" />
+		<MoveTo questId="72738" stepId="12" x="315.5245" y="402.2578" z="-38.37392" pathPrecision="5" />
+		<MoveTo questId="72738" stepId="12" x="309.8601" y="412.8896" z="-37.85572" pathPrecision="5" />
+	</If>
+
+	<!-- Back to town -->
+	<If condition="CurrentWorldId == 60394 and ActorExistsAt(Me.ActorSNO, 309, 412, -38, 5)">
+		<WaitTimer questId="72738" stepId="12" waitTime="1000" />
+		<UseTownPortal questId="72738" stepId="12" />	
+	</If>
+
+	<!-- Leaving game -->
+	<If condition="Me.IsInTown">
+		<LogMessage questId="72738" stepId="12" output="Leaving game. Profile completed" />
+		<WaitTimer questId="72738" stepId="12" waitTime="2000" />
+		<LeaveGame questId="72738" stepId="12" reason="Done." />
+	</If>
+
+  </Order>
+</Profile>

@@ -1,0 +1,270 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:c="clr-namespace:AutoEquipper.UIComponents"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Height="550" Width="375" Name="mainControl">	 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+		<!-- TAB CONTROL -->
+        <TabControl Margin="-2 -2 15 0">
+			<!-- TAB: GENERAL -->
+            <TabItem Header="General">
+				<Grid Margin="0 0 0 0">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+					<Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="Black" BorderThickness="0 0 0 0.5"/>
+					<Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="Black" BorderThickness="0 0.5 0 0.5"/>
+					<Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="Black" BorderThickness="0 0.5 0 0.5"/>
+					<Border Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="Black" BorderThickness="0 0.5 0 0.5"/>
+					
+					<Grid Grid.Row="0">
+						<TextBlock FontWeight="Bold" FontSize="13" Text="Inventory Slot Protection" TextAlignment="Center" Margin="2 1 2 2"/>
+					</Grid>
+					<Grid Grid.Row="1" Margin="10 2 2 20">
+						<UniformGrid Columns="2">
+							<CheckBox Name="checkIgnoreHead"		Content="Ignore Helmet" />
+							<CheckBox Name="checkIgnoreShoulders"	Content="Ignore Shoulders" />
+							<CheckBox Name="checkIgnoreTorso"		Content="Ignore Chest" />
+							<CheckBox Name="checkIgnoreHands"		Content="Ignore Gloves" />
+							<CheckBox Name="checkIgnoreWrists"		Content="Ignore Bracers" />
+							<CheckBox Name="checkIgnoreWaist"		Content="Ignore Belt" />
+							<CheckBox Name="checkIgnoreLegs"		Content="Ignore Pants" />
+							<CheckBox Name="checkIgnoreFeet"		Content="Ignore Boots" />
+							<CheckBox Name="checkIgnoreNeck"		Content="Ignore Amulet" />
+							<CheckBox Name="checkIgnoreFingerL"		Content="Ignore Ring (Left)" />
+							<CheckBox Name="checkIgnoreFingerR"		Content="Ignore Ring (Right)" />
+							<CheckBox Name="checkIgnoreHand"		Content="Ignore Weapon" />
+							<CheckBox Name="checkIgnoreOffhand"		Content="Ignore Offhand" />
+						</UniformGrid>
+					</Grid>
+							
+					<Grid Grid.Row="2">
+						<TextBlock FontWeight="Bold" FontSize="13" Text="Level Protection" TextAlignment="Center" Margin="2"/>
+					</Grid>
+					<Grid Grid.Row="3" Margin="10 2 2 20">
+						<CheckBox Name="checkDisable60" Content="Disable At level 60" />
+					</Grid>
+							
+					<Grid Grid.Row="4">
+						<TextBlock FontWeight="Bold" FontSize="13" Text="Extra Features" TextAlignment="Center" Margin="2"/>
+					</Grid>
+					<Grid Grid.Row="5" Margin="10 2 2 2">
+						<CheckBox Name="checkBuyPots" Content="Buy Potions from Merchants" />
+					</Grid>
+					
+					<Grid Grid.Row="6" Margin="10 2 2 2">
+						<CheckBox Name="checkIdentifyItems" Content="Identify Items on Pickup" />
+					</Grid>
+					<Grid Grid.Row="7" Margin="10 2 2 20">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+						</Grid.RowDefinitions>
+						<CheckBox Grid.Row="0" Name="checkCheckStash" Content="Check Stash for Equipment (ALPHA)" />
+						<TextBlock Grid.Row="1" TextWrapping="Wrap" 
+						Width="Auto" 
+						TextAlignment="Left"
+						FontWeight="Bold" 
+						FontSize="12" 
+						Foreground="#FFF90505" 
+						Text="Use at your own risk, currently does not protect gear. Trinity will vendor your gear if it makes its way to your backpack and the item doesn't meet the keep standards you have set." />
+					</Grid>
+					
+					<Grid Grid.Row="8">
+						<TextBlock Grid.Row="0" FontWeight="Bold" FontSize="13" TextAlignment="Center" Margin="2" 
+							Text="Item Valuation"/>
+					</Grid>
+					<Grid Grid.Row="9">
+						<TextBlock Grid.Row="1" TextWrapping="Wrap" Width="Auto" FontSize="12" TextAlignment="Left" Margin="10 2 10 2" 
+							Text="Set the values below according to how you want the bot to weight DPS vs EHP when evaluating items." />
+					</Grid>
+					<Grid Grid.Row="10" Margin="10 2 2 20">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="1*"/>
+							<ColumnDefinition Width="2*"/>
+							<ColumnDefinition Width="1*"/>
+							<ColumnDefinition Width="2*"/>
+						</Grid.ColumnDefinitions>
+						<Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Content="DPS:" VerticalAlignment="Top" />
+						<TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Name="DamageFactor" Grid.ColumnSpan="1" />
+						<Label Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Content="EHP:" VerticalAlignment="Top" />
+						<TextBox Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Name="EHPFactor" />
+					</Grid>
+				</Grid>
+            </TabItem>
+			<!-- TAB: POTIONS -->
+            <TabItem Header="Potions">
+				<Grid Margin="0">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+					<Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="Black" BorderThickness="0 0 0 0.5"/>
+					<Grid Grid.Row="0">
+						<TextBlock FontWeight="Bold" FontSize="13" Text="Potion Configuration" TextAlignment="Center" Margin="2"/>
+					</Grid>
+					<Grid Grid.Row="1" Margin="10 2 2 20">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="2*"/>
+							<ColumnDefinition Width="2*"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						
+						<!-- Minor Health Potion -->
+						<TextBlock Grid.Row="0" Grid.Column="0" Margin="2, 8, 2, 2" FontWeight="Bold" Text="Minor Health Potion:"/>
+						<Slider Grid.Row="0" Grid.Column="1" Margin="2, 8, 2, 2" Name="sldPotion1"
+							Width="115" Value="1" Orientation="Horizontal" HorizontalAlignment="Left" 
+							IsSnapToTickEnabled="True" Minimum="0" Maximum="99" />
+						<TextBox Grid.Row="0" Grid.Column="2" 
+							Text="{Binding ElementName=sldPotion1, Path=Value}"                     
+							HorizontalAlignment="Stretch" 
+							Margin="0,2,2,2" 
+							TextAlignment="Center" 
+							IsReadOnly="True"/>
+
+						<!-- Lesser Health Potion -->
+						<TextBlock Grid.Row="1" Grid.Column="0" Margin="2, 8, 2, 2" FontWeight="Bold" Text="Lesser Health Potion:"/>
+						<Slider Grid.Row="1" Grid.Column="1" Margin="2, 8, 2, 2" Name="sldPotion2"
+							Width="115" Value="1" Orientation="Horizontal" HorizontalAlignment="Left" 
+							IsSnapToTickEnabled="True" Minimum="0" Maximum="99" />
+						<TextBox Grid.Row="1" Grid.Column="2" 
+							Text="{Binding ElementName=sldPotion2, Path=Value}"                     
+							HorizontalAlignment="Stretch" 
+							Margin="0,2,2,2" 
+							TextAlignment="Center" 
+							IsReadOnly="True"/>
+
+						<!-- Health Potion -->
+						<TextBlock Grid.Row="2" Grid.Column="0" Margin="2, 8, 2, 2" FontWeight="Bold" Text="Health Potion:"/>
+						<Slider Grid.Row="2" Grid.Column="1" Margin="2, 8, 2, 2" Name="sldPotion3"
+							Width="115" Value="1" Orientation="Horizontal" HorizontalAlignment="Left" 
+							IsSnapToTickEnabled="True" Minimum="0" Maximum="99" />
+						<TextBox Grid.Row="2" Grid.Column="2" 
+							Text="{Binding ElementName=sldPotion3, Path=Value}"                     
+							HorizontalAlignment="Stretch" 
+							Margin="0,2,2,2" 
+							TextAlignment="Center" 
+							IsReadOnly="True"/>
+
+						<!-- Greater Health Potion -->
+						<TextBlock Grid.Row="3" Grid.Column="0" Margin="2, 8, 2, 2" FontWeight="Bold" Text="Greater Health Potion:"/>
+						<Slider Grid.Row="3" Grid.Column="1" Margin="2, 8, 2, 2" Name="sldPotion4"
+							Width="115" Value="1" Orientation="Horizontal" HorizontalAlignment="Left" 
+							IsSnapToTickEnabled="True" Minimum="0" Maximum="99" />
+						<TextBox Grid.Row="3" Grid.Column="2" 
+							Text="{Binding ElementName=sldPotion4, Path=Value}"                     
+							HorizontalAlignment="Stretch" 
+							Margin="0,2,2,2" 
+							TextAlignment="Center" 
+							IsReadOnly="True"/>
+
+						<!-- Major Health Potion -->
+						<TextBlock Grid.Row="4" Grid.Column="0" Margin="2, 8, 2, 2" FontWeight="Bold" Text="Major Health Potion:"/>
+						<Slider Grid.Row="4" Grid.Column="1" Margin="2, 8, 2, 2" Name="sldPotion5"
+							Width="115" Value="1" Orientation="Horizontal" HorizontalAlignment="Left" 
+							IsSnapToTickEnabled="True" Minimum="0" Maximum="99" />
+						<TextBox Grid.Row="4" Grid.Column="2" 
+							Text="{Binding ElementName=sldPotion5, Path=Value}"                     
+							HorizontalAlignment="Stretch" 
+							Margin="0,2,2,2" 
+							TextAlignment="Center" 
+							IsReadOnly="True"/>
+
+						<!-- Super Health Potion -->
+						<TextBlock Grid.Row="5" Grid.Column="0" Margin="2, 8, 2, 2" FontWeight="Bold" Text="Super Health Potion:"/>
+						<Slider Grid.Row="5" Grid.Column="1" Margin="2, 8, 2, 2" Name="sldPotion6"
+							Width="115" Value="1" Orientation="Horizontal" HorizontalAlignment="Left" 
+							IsSnapToTickEnabled="True" Minimum="0" Maximum="99" />
+						<TextBox Grid.Row="5" Grid.Column="2" 
+							Text="{Binding ElementName=sldPotion6, Path=Value}"                     
+							HorizontalAlignment="Stretch" 
+							Margin="0,2,2,2" 
+							TextAlignment="Center" 
+							IsReadOnly="True"/>
+
+						<!-- Heroic Health Potion -->
+						<TextBlock Grid.Row="6" Grid.Column="0" Margin="2, 8, 2, 2" FontWeight="Bold" Text="Heroic Health Potion:"/>
+						<Slider Grid.Row="6" Grid.Column="1" Margin="2, 8, 2, 2" Name="sldPotion7"
+							Width="115" Value="1" Orientation="Horizontal" HorizontalAlignment="Left" 
+							IsSnapToTickEnabled="True" Minimum="0" Maximum="99" />
+						<TextBox Grid.Row="6" Grid.Column="2" 
+							Text="{Binding ElementName=sldPotion7, Path=Value}"                     
+							HorizontalAlignment="Stretch" 
+							Margin="0,2,2,2" 
+							TextAlignment="Center" 
+							IsReadOnly="True"/>
+
+						<!-- Resplendent Health Potion -->
+						<TextBlock Grid.Row="7" Grid.Column="0" Margin="2, 8, 2, 2" FontWeight="Bold" Text="Resplendent Health Potion:"/>
+						<Slider Grid.Row="7" Grid.Column="1" Margin="2, 8, 2, 2" Name="sldPotion8"
+							Width="115" Value="1" Orientation="Horizontal" HorizontalAlignment="Left" 
+							IsSnapToTickEnabled="True" Minimum="0" Maximum="99" />
+						<TextBox Grid.Row="7" Grid.Column="2" 
+							Text="{Binding ElementName=sldPotion8, Path=Value}"                     
+							HorizontalAlignment="Stretch" 
+							Margin="0,2,2,2" 
+							TextAlignment="Center" 
+							IsReadOnly="True"/>
+
+						<!-- Runic Health Potion -->
+						<TextBlock Grid.Row="8" Grid.Column="0" Margin="2, 8, 2, 2" FontWeight="Bold" Text="Runic Health Potion:"/>
+						<Slider Grid.Row="8" Grid.Column="1" Margin="2, 8, 2, 2" Name="sldPotion9"
+							Width="115" Value="1" Orientation="Horizontal" HorizontalAlignment="Left" 
+							IsSnapToTickEnabled="True" Minimum="0" Maximum="99" />
+						<TextBox Grid.Row="8" Grid.Column="2" 
+							Text="{Binding ElementName=sldPotion9, Path=Value}"                     
+							HorizontalAlignment="Stretch" 
+							Margin="0,2,2,2" 
+							TextAlignment="Center" 
+							IsReadOnly="True"/>
+
+						<!-- Mythic Health Potion -->
+						<TextBlock Grid.Row="9" Grid.Column="0" Margin="2, 8, 2, 2" FontWeight="Bold" Text="Mythic Health Potion:"/>
+						<Slider Grid.Row="9" Grid.Column="1" Margin="2, 8, 2, 2" Name="sldPotion10"
+							Width="115" Value="1" Orientation="Horizontal" HorizontalAlignment="Left" 
+							IsSnapToTickEnabled="True" Minimum="0" Maximum="99" />
+						<TextBox Grid.Row="9" Grid.Column="2" 
+							Text="{Binding ElementName=sldPotion10, Path=Value}"                     
+							HorizontalAlignment="Stretch" 
+							Margin="0,2,2,2" 
+							TextAlignment="Center" 
+							IsReadOnly="True"/>
+
+					</Grid>
+				</Grid>
+            </TabItem>
+        </TabControl>
+		<!-- BOTTOM BUTTONS -->
+		<Grid Grid.Row="1" Margin="2 5 2 10">
+			<Button Width="125" Height="25" HorizontalAlignment="Center" Content="Save" Name="buttonSave" />
+		</Grid>
+    </Grid>
+</UserControl>

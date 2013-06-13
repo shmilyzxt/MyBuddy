@@ -1,0 +1,61 @@
+<Profile>
+	<Name>[A2 - Inferno] Magi's Vault of the Assassin</Name>
+	<KillMonsters>True</KillMonsters>
+	<PickupLoot>True</PickupLoot>
+	<GameParams quest="57337" step="1" act="A2" difficulty="Inferno" monsterPower="1" resumeFromSave="True" isPrivate="True" numGames="-1"  />
+	<Order>
+		
+		<!-- Death Handling [OPTIONAL] -->
+		<TrinityMaxDeaths questId="1" max="10" />
+		
+		
+		<!-- ******************** -->
+		<!-- Warp to Desolate Sands  -->
+        <While condition="Me.IsInTown">
+			<!-- Checkpoint Portal if this is a resume -->
+			<TakeTownPortal questId="1" />
+			
+			<!-- Use waypoint if this is a new  game  -->
+			<UseWaypoint questId="1" actorId="6442" x="324" y="291" z="1.64" waypointNumber="8" />			
+		</While>
+		
+		
+		<!-- ************** -->
+		<!-- Desolate Sands -->
+		<If condition="CurrentWorldId == 70885">
+			<While condition="not MarkerExistsAt(-1758560943, ZetaDia.Me.Position.X, ZetaDia.Me.Position.Y, ZetaDia.Me.Position.Z, 300)">
+				<TrinityExploreDungeon questId="1" stepId="1" until="ExitFound" exitNameHash="-1758560943" boxSize="50" boxTolerance="0.10" pathPrecision="30" timeoutType="GoldInactivity" timeoutValue="60" statusText="Searching for Vault of the Assassin">			
+					<IgnoreScenes>
+						<IgnoreScene sceneName="Exit" />
+					</IgnoreScenes>
+				</TrinityExploreDungeon>
+			</While>
+			
+			<UsePortal questId="1" stepId="1" portalMarkerHash="-1758560943" destinationWorldId="123183" interactRange="25" />
+		</If>
+		
+		
+		<!-- ********************* -->
+		<!-- Vault of the Assassin -->
+		<If condition="CurrentWorldId == 123183">
+			<TrinityOffsetMove questId="1" stepId="1" offsetX="-40" offsetY="-30" offsetZ="-5" pathPrecision="5" statusText="Dodge Pillar"/>
+			
+			<TrinityExploreDungeon questId="1" stepId="1" until="FullyExplored" boxSize="80" boxTolerance="0.10" pathPrecision="40" timeoutType="GoldInactivity" timeoutValue="15" statusText="Clearing Vault of the Assassin">			
+				<IgnoreScenes>
+					<IgnoreScene sceneName="Entrance" />
+				</IgnoreScenes>
+		  	</TrinityExploreDungeon>
+			
+			<!-- Back to town -->
+			<While condition="not Me.IsInTown">   
+				<UseTownPortal questId="1" statusText="Returning to Town" />  
+			</While>
+			
+			<LeaveGame reason="Vault has been Vanquished." statusText="Exiting Game" />
+		</If>
+		
+		<!-- **************** -->
+		<!-- Leave Game ERROR -->
+		<LeaveGame reason="**** Error ****" />
+	</Order>
+</Profile>

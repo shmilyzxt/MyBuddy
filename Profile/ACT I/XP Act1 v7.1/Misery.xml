@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Profile xmlns="http://tempuri.org/ProfileSchema.xsd" xmlns:xsi="http://tempuri.org/ProfileSchema.xsd">
+  <Name>Fallen Fields of Misery</Name>
+  <GameParams quest="136656" step="-1" act="A1" difficulty="Inferno" resumeFromSave="False" isPrivate="True" numGames="-1" />
+  <KillMonsters>True</KillMonsters>
+  <PickupLoot>True</PickupLoot>
+  <Order>
+
+    <!--Death in Fields with a Checkpoint in Decaying and Stuck Preventors-->
+
+    <!--Stone Check-->
+    <If condition="ActorExistsAt(Me.ActorSNO, 592, 592, -5, 100) and ZetaDia.CurrentWorldId == 165797">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="10" x="480" y="580" z="0.5" unsafeRandomDistance="0" name="Dungeon Stone Check North" />
+      <While condition="ActorExistsAt(135248, 450, 580, 0.5, 30)">
+        <UseObject questId="1" stepId="1" actorId="135248" isPortal="False" interactRange="10" destinationWorldId="71150" />
+      </While>
+    </If>
+    <If condition="ActorExistsAt(Me.ActorSNO, 480, 580, 0.5, 30) and ZetaDia.CurrentWorldId == 165797">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="10" x="580" y="690" z="0.6" unsafeRandomDistance="0" name="Dungeon Stone Check East" />
+      <While condition="ActorExistsAt(135248, 575, 710, 0.5, 30)">
+        <UseObject questId="1" stepId="1" actorId="135248" isPortal="False" interactRange="10" destinationWorldId="71150" />
+      </While>
+    </If>
+    <If condition="ActorExistsAt(Me.ActorSNO, 580, 690, 0.6, 30) and ZetaDia.CurrentWorldId == 165797">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="10" x="580" y="480" z="0.5" unsafeRandomDistance="0" name="Dungeon Stone Check West" />
+      <While condition="ActorExistsAt(135248, 710, 575, 0.5, 30)">
+        <UseObject questId="1" stepId="1" actorId="135248" isPortal="False" interactRange="10" destinationWorldId="71150" />
+      </While>
+    </If>
+    <If condition="ActorExistsAt(Me.ActorSNO, 580, 480, 0.5, 30) and ZetaDia.CurrentWorldId == 165797">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="10" x="690" y="580" z="0.5" unsafeRandomDistance="0" name="Dungeon Stone Check South" />
+      <While condition="ActorExistsAt(135248, 580, 450, 0.5, 30)">
+        <UseObject questId="1" stepId="1" actorId="135248" isPortal="False" interactRange="10" destinationWorldId="71150" />
+      </While>
+    </If>
+
+    <If condition="ZetaDia.CurrentWorldId == 81164">
+      <LoadProfile profile="Scavenger2.xml" nodelay="true" />
+    </If>
+
+    <!--Off to Fields of Misery-->
+
+    <While condition="ZetaDia.CurrentLevelAreaId == 19947">
+      <LogMessage message="In Town?" />
+      <UseWaypoint questId="1" stepId="1" actorId="6442" x="2981.730" y="2835.009" z="24.908" waypointNumber="6" />
+      <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      <LogMessage message="Fallen Fields of Misery --Also Farms Destruction Key--" />
+    </While>
+
+    <If condition="ZetaDia.CurrentLevelAreaId == 72712">
+      <LogMessage message="Moving towards Misery" />
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="20" x="2111" y="1731" z="0.3" unsafeRandomDistance="5" name="Cemetary Gate" />
+    </If>
+
+    <!--Starting Manual PathExplore-->
+
+    <!--Red Path-->
+    <LogMessage message="Starting Red Path" />
+    <If condition="ActorExistsAt(Me.ActorSNO, 2111, 1731, 0.3, 150)">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="20" x="2098" y="1482" z="0.1" unsafeRandomDistance="5" name="Pre Red" />
+    </If>
+    <If condition="ActorExistsAt(Me.ActorSNO, 2098, 1482, 0.1, 150)">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="20" x="2165" y="1350" z="0.1" unsafeRandomDistance="5" name="Red 1" />
+    </If>
+    <If condition="ActorExistsAt(Me.ActorSNO, 2165, 1350, 0.1, 150)">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="20" x="2089" y="1206" z="0.1" unsafeRandomDistance="5" name="2" />
+    </If>
+    <If condition="ActorExistsAt(Me.ActorSNO, 2089, 1206, 0.1, 150)">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="20" x="2269" y="1107" z="0.1" unsafeRandomDistance="5" name="Checking Scavenger" />
+    </If>
+    <TrinityUseOnce id="51">
+      <!--Dungeon Check-->
+      <If condition="ActorExistsAt(Me.ActorSNO, 2269, 1107, 0.1, 300)">
+        <If condition="ActorExistsAt(175501, 2237, 1053, -0.1, 200)">
+          <UseObject questId="1" stepId="1" actorId="175501" isPortal="True" destinationWorldId="81163" />
+          <WaitTimer questId="1" stepId="1" waitTime="1000" />
+          <LoadProfile profile="Scavenger1.xml" nodelay="true" />
+        </If>
+      </If>
+    </TrinityUseOnce>
+    <If condition="ActorExistsAt(Me.ActorSNO, 2269, 1107, -0.1, 150)">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2394" y="963" z="0.1" unsafeRandomDistance="5" name="3" />
+    </If>
+    <If condition="ActorExistsAt(Me.ActorSNO, 2394, 963, 0.1, 150)">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2453" y="871" z="0.1" unsafeRandomDistance="5" name="4" />
+    </If>
+    <If condition="ActorExistsAt(Me.ActorSNO, 2453, 871, 0.1, 150)">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2387" y="834" z="0.01" unsafeRandomDistance="5" name="Decaying Crypt Check" />
+    </If>
+    <TrinityUseOnce id="53">
+      <!--Dungeon Check-->
+      <If condition="ActorExistsAt(Me.ActorSNO, 2387, 834, 0.01, 300)">
+        <If condition="ActorExistsAt(176001, 2255, 841, 0.1, 200)">
+          <UseObject questId="1" stepId="1" actorId="176001" isPortal="True" destinationWorldId="102299" />
+          <WaitTimer questId="1" stepId="1" waitTime="1000" />
+          <LoadProfile profile="Decaying.xml" nodelay="true" />
+        </If>
+      </If>
+    </TrinityUseOnce>
+    <If condition="ActorExistsAt(Me.ActorSNO, 2387, 834, 0.01, 150)">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2228" y="699" z="0.1" unsafeRandomDistance="5" name="6" />
+    </If>
+
+    <If condition="ZetaDia.CurrentLevelAreaId == 19952">
+      <TrinityRandomRoll id="222" min="1" max="2" />
+      <TrinityIfRandom id="222" result="1">
+        <!--Blue Path-->
+        <LogMessage message="Starting Blue Path" />
+        <TrinityUseOnce id="55">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2191" y="626" z="0.1" unsafeRandomDistance="5" name="Blue 1" />
+        </TrinityUseOnce>
+        <TrinityUseOnce id="56">
+          <!--Dungeon Check-->
+          <If condition="ActorExistsAt(Me.ActorSNO, 2191, 626, 0.1, 300)">
+            <If condition="ActorExistsAt(175501, 2107, 593, -0.09, 200)">
+              <UseObject questId="1" stepId="1" actorId="175501" isPortal="True" destinationWorldId="81163" />
+              <WaitTimer questId="1" stepId="1" waitTime="1000" />
+              <LoadProfile profile="Scavenger1.xml" nodelay="true" />
+            </If>
+          </If>
+        </TrinityUseOnce>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2107, 593, -0.09, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2187" y="482" z="0.1" unsafeRandomDistance="5" name="2" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2187, 482, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2071" y="441" z="0.1" unsafeRandomDistance="5" name="3" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2071, 441, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1972" y="474" z="0.1" unsafeRandomDistance="5" name="4" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1972, 474, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1916" y="614" z="0.2" unsafeRandomDistance="5" name="Decaying Crypt Check" />
+        </If>
+        <TrinityUseOnce id="61">
+          <!--Dungeon Check-->
+          <If condition="ActorExistsAt(Me.ActorSNO, 1916, 614, 0.2, 300)">
+            <If condition="ActorExistsAt(176001, 1775, 601, 0.1, 200)">
+              <UseObject questId="1" stepId="1" actorId="176001" isPortal="True" destinationWorldId="102299" />
+              <WaitTimer questId="1" stepId="1" waitTime="1000" />
+              <LoadProfile profile="Decaying.xml" nodelay="true" />
+            </If>
+          </If>
+        </TrinityUseOnce>
+        <TrinityUseOnce id="57">
+          <If condition="ActorExistsAt(Me.ActorSNO, 1916, 614, 0.2, 150)">
+            <If condition="not ZetaDia.CurrentWorldId == 102299">
+              <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1972" y="474" z="0.1" unsafeRandomDistance="5" name="4" />
+            </If>
+          </If>
+        </TrinityUseOnce>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1972, 474, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1990" y="319" z="0.1" unsafeRandomDistance="5" name="5" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1990, 319, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1896" y="225" z="0.1" unsafeRandomDistance="5" name="6" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1896, 225, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1809" y="229" z="0.1" unsafeRandomDistance="5" name="7" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1809, 229, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1706" y="245" z="0.1" unsafeRandomDistance="5" name="8" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1706, 245, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1675" y="348" z="0.1" unsafeRandomDistance="5" name="9" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1675, 348, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1666" y="455" z="0.1" unsafeRandomDistance="5" name="10" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1666, 455, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1681" y="615" z="0.1" unsafeRandomDistance="5" name="11" />
+        </If>
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1682" y="738" z="0.1" unsafeRandomDistance="5" name="12" />
+      </TrinityIfRandom>
+
+      <TrinityIfRandom id="222" result="2">
+        <!--Yellow Path-->
+        <LogMessage message="Starting Yellow Path" />
+        <TrinityUseOnce id="69">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2158" y="631" z="0.1" unsafeRandomDistance="5" name="Yellow 1" />
+        </TrinityUseOnce>
+        <TrinityUseOnce id="56">
+          <!--Dungeon Check-->
+          <If condition="ActorExistsAt(Me.ActorSNO, 2158, 631, 0.1, 300)">
+            <If condition="ActorExistsAt(175501, 2107, 593, -0.09, 200)">
+              <UseObject questId="1" stepId="1" actorId="175501" isPortal="True" destinationWorldId="81163" />
+              <WaitTimer questId="1" stepId="1" waitTime="1000" />
+              <LoadProfile profile="Scavenger1.xml" nodelay="true" />
+            </If>
+          </If>
+        </TrinityUseOnce>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2158, 631, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2144" y="463" z="0.1" unsafeRandomDistance="5" name="2" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2144, 463, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2016" y="519" z="0.1" unsafeRandomDistance="5" name="3" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2016, 519, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1916" y="614" z="0.2" unsafeRandomDistance="5" name="Decaying Crypt Check" />
+        </If>
+        <TrinityUseOnce id="61">
+          <!--Dungeon Check-->
+          <If condition="ActorExistsAt(Me.ActorSNO, 1916, 614, 0.2, 300)">
+            <If condition="ActorExistsAt(176001, 1775, 601, 0.1, 200)">
+              <UseObject questId="1" stepId="1" actorId="176001" isPortal="True" destinationWorldId="102299" />
+              <WaitTimer questId="1" stepId="1" waitTime="1000" />
+              <LoadProfile profile="Decaying.xml" nodelay="true" />
+            </If>
+          </If>
+        </TrinityUseOnce>
+        <TrinityUseOnce id="58">
+          <If condition="ActorExistsAt(Me.ActorSNO, 1916, 614, 0.2, 150)">
+            <If condition="not ZetaDia.CurrentWorldId == 102299">
+              <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2016" y="519" z="0.1" unsafeRandomDistance="5" name="3" />
+            </If>
+          </If>
+        </TrinityUseOnce>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2016, 519, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1962" y="390" z="0.1" unsafeRandomDistance="5" name="4" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1962, 390, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1848" y="331" z="0.1" unsafeRandomDistance="5" name="5" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1848, 331, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1778" y="268" z="0.1" unsafeRandomDistance="5" name="6" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1778, 268, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1834" y="191" z="0.1" unsafeRandomDistance="5" name="7" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1834, 191, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1683" y="228" z="0.1" unsafeRandomDistance="5" name="8" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1683, 228, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1703" y="300" z="0.1" unsafeRandomDistance="5" name="9" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1703, 300, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1638" y="435" z="0.1" unsafeRandomDistance="5" name="10" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1638, 435, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1672" y="586" z="0.1" unsafeRandomDistance="5" name="11" />
+        </If>
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1647" y="813" z="0.1" unsafeRandomDistance="5" name="12" />
+      </TrinityIfRandom>
+    </If>
+
+    <If condition="ZetaDia.CurrentLevelAreaId == 19952">
+      <TrinityRandomRoll id="333" min="1" max="2" />
+      <TrinityIfRandom id="333" result="1">
+        <!--Green Path-->
+        <LogMessage message="Starting Green Path" />
+        <If condition="ActorExistsAt(Me.ActorSNO, 1647, 813, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1719" y="800" z="0.1" unsafeRandomDistance="5" name="Green 1" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1719, 800, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1852" y="767" z="0.1" unsafeRandomDistance="5" name="2" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1852, 767, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1992" y="641" z="0.1" unsafeRandomDistance="5" name="3" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1992, 641, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2072" y="640" z="0.1" unsafeRandomDistance="5" name="4" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2072, 640, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2167" y="658" z="0.1" unsafeRandomDistance="5" name="5" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2167, 658, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2159" y="807" z="0.1" unsafeRandomDistance="5" name="6" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2159, 807, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2037" y="840" z="0.1" unsafeRandomDistance="5" name="7" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2037, 840, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2054" y="732" z="0.1" unsafeRandomDistance="5" name="8" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2054, 732, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1952" y="741" z="0.1" unsafeRandomDistance="5" name="9" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1952, 741, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1912" y="866" z="0.1" unsafeRandomDistance="5" name="10" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1912, 866, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1954" y="981" z="0.1" unsafeRandomDistance="5" name="11" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1954, 981, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2111" y="899" z="0.1" unsafeRandomDistance="5" name="Checking Scavenger" />
+        </If>
+        <TrinityUseOnce id="96">
+          <!--Dungeon Check-->
+          <If condition="ActorExistsAt(Me.ActorSNO, 2111, 899, 0.1, 300)">
+            <If condition="ActorExistsAt(175501, 2049, 906, -1, 200)">
+              <UseObject questId="1" stepId="1" actorId="175501" isPortal="True" destinationWorldId="81163" />
+              <WaitTimer questId="1" stepId="1" waitTime="1000" />
+              <LoadProfile profile="Scavenger1.xml" nodelay="true" />
+            </If>
+          </If>
+        </TrinityUseOnce>
+        <TrinityUseOnce id="70">
+          <If condition="ActorExistsAt(Me.ActorSNO, 2111, 899, 0.1, 150)">
+            <If condition="not ZetaDia.CurrentWorldId == 81163">
+              <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2138" y="902" z="0.1" unsafeRandomDistance="5" name="12" />
+            </If>
+          </If>
+        </TrinityUseOnce>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2138, 902, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2235" y="988" z="0.1" unsafeRandomDistance="5" name="13" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2235, 988, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2140" y="1093" z="0.1" unsafeRandomDistance="5" name="14" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2140, 1093, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2147" y="1236" z="0.1" unsafeRandomDistance="5" name="15" />
+        </If>
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2161" y="1375" z="0.1" unsafeRandomDistance="5" name="End" />
+      </TrinityIfRandom>
+
+      <TrinityIfRandom id="333" result="2">
+        <!--Purple Path-->
+        <LogMessage message="Starting Purple Path" />
+        <If condition="ActorExistsAt(Me.ActorSNO, 1647, 813, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1719" y="800" z="0.1" unsafeRandomDistance="5" name="Purple 1" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1719, 800, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1828" y="874" z="0.1" unsafeRandomDistance="5" name="2" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1828, 874, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1890" y="823" z="0.1" unsafeRandomDistance="5" name="3" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1890, 823, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1863" y="740" z="0.1" unsafeRandomDistance="5" name="4" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1863, 740, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2042" y="719" z="0.1" unsafeRandomDistance="5" name="5" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2042, 719, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2061" y="819" z="0.1" unsafeRandomDistance="5" name="6" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2061, 819, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2070" y="873" z="0.2" unsafeRandomDistance="5" name="Checking Scavenger" />
+        </If>
+        <TrinityUseOnce id="96">
+          <!--Dungeon Check-->
+          <If condition="ActorExistsAt(Me.ActorSNO, 2070, 873, 0.2, 300)">
+            <If condition="ActorExistsAt(175501, 2049, 906, -1, 200)">
+              <UseObject questId="1" stepId="1" actorId="175501" isPortal="True" destinationWorldId="81163" />
+              <WaitTimer questId="1" stepId="1" waitTime="1000" />
+              <LoadProfile profile="Scavenger1.xml" nodelay="true" />
+            </If>
+          </If>
+        </TrinityUseOnce>
+        <TrinityUseOnce id="71">
+          <If condition="ActorExistsAt(Me.ActorSNO, 2070, 873, 0.2, 150)">
+            <If condition="not ZetaDia.CurrentWorldId == 81163">
+              <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2162" y="843" z="0.1" unsafeRandomDistance="5" name="7" />
+            </If>
+          </If>
+        </TrinityUseOnce>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2162, 843, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2060" y="952" z="0.1" unsafeRandomDistance="5" name="8" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2060, 952, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1901" y="962" z="0.1" unsafeRandomDistance="5" name="9" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1901, 962, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1796" y="960" z="0.1" unsafeRandomDistance="5" name="10" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1796, 960, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="1895" y="1078" z="0.1" unsafeRandomDistance="5" name="11" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 1895, 1078, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2021" y="1024" z="0.1" unsafeRandomDistance="5" name="12" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2021, 1024, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2115" y="1007" z="0.1" unsafeRandomDistance="5" name="13" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2115, 1007, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2069" y="1155" z="0.1" unsafeRandomDistance="5" name="14" />
+        </If>
+        <If condition="ActorExistsAt(Me.ActorSNO, 2069, 1155, 0.1, 150)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2094" y="1276" z="0.1" unsafeRandomDistance="5" name="15" />
+        </If>
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2161" y="1375" z="0.1" unsafeRandomDistance="5" name="End" />
+        <UseTownPortal questId="1" />
+      </TrinityIfRandom>
+    </If>
+
+    <!--v^v^v^v^v^v^v-->
+
+    <TrinityLoadProfile file="Fallen_START_.xml" nodelay="false" exit="true" />
+  </Order>
+</Profile>

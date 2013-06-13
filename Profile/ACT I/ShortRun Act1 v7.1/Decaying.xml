@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Profile xmlns="http://tempuri.org/ProfileSchema.xsd" xmlns:xsi="http://tempuri.org/ProfileSchema.xsd">
+  <Name>Fallen Decaying Crypt</Name>
+  <GameParams quest="136656" step="-1" act="A1" difficulty="Inferno" resumeFromSave="False" isPrivate="True" numGames="-1" />
+  <KillMonsters>True</KillMonsters>
+  <PickupLoot>True</PickupLoot>
+  <Order>
+
+    <While condition="Me.IsInTown">
+      <LoadProfile profile="Misery.xml" nodelay="true" />
+    </While>
+
+    <!--Trinity Explore-->
+
+    <If condition="ActorExistsAt(176002, 261, 1110, 2, 100)">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="150" x="464" y="1058" z="-0.7" unsafeRandomDistance="0" name="Stuck Preventer" />
+    </If>
+
+    <If condition="ActorExistsAt(176002, 741, 870, 2, 100)">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="150" x="943" y="820" z="-0.7" unsafeRandomDistance="0" name="Stuck Preventer" />
+    </If>
+
+    <If condition="ActorExistsAt(176002, 261, 870, 2, 100)">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="150" x="459" y="822" z="-0.1" unsafeRandomDistance="0" name="Stuck Preventer" />
+    </If>
+
+    <If condition="ZetaDia.CurrentWorldId == 102299">
+      <TrinityExploreDungeon questId="136656" stepId="1" boxSize="40" boxTolerance="0.04" pathPrecision="20"
+                             endType="ExitFound" exitNameHash="1070710596" objectDistance="150">
+        <PrioritizeScenes>
+          <PrioritizeScene sceneName="Exit" />
+        </PrioritizeScenes>
+      </TrinityExploreDungeon>
+      <UseObject questId="1" stepId="1" actorId="176002" isPortal="True" interactRange="20" destinationWorldId="165797" />
+      <WaitTimer questId="1" stepId="1" waitTime="1000" />
+    </If>
+
+    <If condition="ZetaDia.CurrentWorldId == 165797">
+      <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      <TrinityExploreDungeon questId="1" stepId="1" boxSize="60" boxTolerance="0.03" pathPrecision="30"
+                             endType="ObjectFound" actorId="76907" objectDistance="50">
+      </TrinityExploreDungeon>
+    </If>
+
+    <!--Stone Check-->
+
+    <If condition="ActorExistsAt(Me.ActorSNO, 623, 578, -5, 100) or ActorExistsAt(Me.ActorSNO, 577, 614, -5, 100) or ActorExistsAt(Me.ActorSNO, 580, 548, -5, 100)">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="10" x="560" y="580" z="-5" unsafeRandomDistance="0" name="Mid-Point" />
+    </If>
+
+    <If condition="ActorExistsAt(Me.ActorSNO, 596, 578, -5, 50) and ZetaDia.CurrentWorldId == 165797">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="10" x="480" y="580" z="0.5" unsafeRandomDistance="0" name="Dungeon Stone Check North" />
+      <While condition="ActorExistsAt(135248, 450, 580, 0.5, 100)">
+        <UseObject questId="1" stepId="1" actorId="135248" isPortal="False" interactRange="10" destinationWorldId="71150" />
+        <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      </While>
+    </If>
+    <If condition="ActorExistsAt(Me.ActorSNO, 480, 580, 0.5, 30) and ZetaDia.CurrentWorldId == 165797">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="10" x="580" y="690" z="0.6" unsafeRandomDistance="0" name="Dungeon Stone Check East" />
+      <While condition="ActorExistsAt(135248, 575, 710, 0.5, 100)">
+        <UseObject questId="1" stepId="1" actorId="135248" isPortal="False" interactRange="10" destinationWorldId="71150" />
+        <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      </While>
+    </If>
+    <If condition="ActorExistsAt(Me.ActorSNO, 580, 690, 0.6, 30) and ZetaDia.CurrentWorldId == 165797">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="10" x="580" y="480" z="0.5" unsafeRandomDistance="0" name="Dungeon Stone Check West" />
+      <While condition="ActorExistsAt(135248, 710, 575, 0.5, 100)">
+        <UseObject questId="1" stepId="1" actorId="135248" isPortal="False" interactRange="10" destinationWorldId="71150" />
+        <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      </While>
+    </If>
+    <If condition="ActorExistsAt(Me.ActorSNO, 580, 480, 0.5, 30) and ZetaDia.CurrentWorldId == 165797">
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="10" x="720" y="577" z="0.1" unsafeRandomDistance="0" name="Dungeon Stone Check South" />
+      <While condition="ActorExistsAt(135248, 760, 572, 0.1, 100)">
+        <UseObject questId="1" stepId="1" actorId="135248" isPortal="False" interactRange="10" destinationWorldId="71150" />
+        <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      </While>
+    </If>
+
+    <!--v^v^v^v^v^v^v-->
+
+    <LoadProfile profile="Misery.xml" nodelay="true" />
+  </Order>
+</Profile>

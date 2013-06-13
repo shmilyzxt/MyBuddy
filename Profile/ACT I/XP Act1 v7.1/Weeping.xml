@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Profile xmlns="http://tempuri.org/ProfileSchema.xsd" xmlns:xsi="http://tempuri.org/ProfileSchema.xsd">
+  <Name>Fallen Weeping Hallow</Name>
+  <GameParams quest="136656" step="-1" act="A1" difficulty="Inferno" resumeFromSave="False" isPrivate="True" numGames="-1" />
+  <KillMonsters>True</KillMonsters>
+  <PickupLoot>True</PickupLoot>
+  <Order>
+
+    <!--Momentum Rule-->
+
+    <TrinityMaxDeaths max="99" />
+    <If condition="ZetaDia.Me.IsDead">
+      <LogMessage output="Momentum Keeper Enabled!!!" />
+      <LoadProfile profile="Misery.xml" nodelay="true" />
+    </If>
+
+    <If condition="not ZetaDia.CurrentLevelAreaId == 19954">
+      <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      <UseTownPortal questId="1" />
+      <WaitTimer questId="1" stepId="1" waitTime="1000" />
+    </If>
+
+    <!--Off to Weeping Hallow-->
+
+    <While condition="ZetaDia.CurrentLevelAreaId == 19947">
+      <LogMessage message="In Town?" />
+      <!--Weeping Hallow-->
+      <UseWaypoint questId="1" stepId="1" actorId="6442" x="2981.730" y="2835.009" z="24.908" waypointNumber="6" />
+      <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      <LogMessage message="Fallen Weeping Hallow" />
+    </While>
+
+    <!--T^T Weeping Hallow-->
+
+    <If condition="ZetaDia.CurrentLevelAreaId == 72712">
+      <LogMessage message="Searching for bodies ;D" />
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2313" y="1861" z="0.4" noskip="true" name="Weeping 1" />
+    </If>
+
+    <If condition="ZetaDia.CurrentLevelAreaId == 19954">
+      <If condition="ActorExistsAt(Me.ActorSNO, 2313, 1861, 0.4, 300)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2510" y="1730" z="0.1" name="2" />
+      </If>
+      <If condition="ActorExistsAt(Me.ActorSNO, 2510, 1730, 0.1, 300)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2721" y="1906" z="0.1" name="3" />
+      </If>
+      <TrinityUseOnce id="2">
+        <If condition="ActorExistsAt(Me.ActorSNO, 2721, 1906, 0.1, 300)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2950" y="1909" z="0.1" name="4" />
+        </If>
+      </TrinityUseOnce>
+      <If condition="ActorExistsAt(Me.ActorSNO, 2950, 1909, 0.1, 300)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2963" y="2162" z="0.1" name="5" />
+      </If>
+      <TrinityUseOnce id="3">
+        <If condition="ActorExistsAt(Me.ActorSNO, 2963, 2162, 0.1, 300)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2934" y="2284" z="0.1" name="6" />
+        </If>
+      </TrinityUseOnce>
+      <If condition="ActorExistsAt(Me.ActorSNO, 2934, 2284, 0.1, 300)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2836" y="2259" z="0.1" name="7" />
+      </If>
+      <TrinityUseOnce id="4">
+        <If condition="ActorExistsAt(Me.ActorSNO, 2836, 2259, 0.1, 300)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2710" y="2163" z="0.1" name="8" />
+        </If>
+      </TrinityUseOnce>
+      <If condition="ActorExistsAt(Me.ActorSNO, 2710, 2163, 0.1, 300)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2848" y="2157" z="0.1" name="9" />
+      </If>
+      <TrinityUseOnce id="5">
+        <If condition="ActorExistsAt(Me.ActorSNO, 2848, 2157, 0.1, 300)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2795" y="2007" z="0.2" name="10" />
+        </If>
+      </TrinityUseOnce>
+      <If condition="ActorExistsAt(Me.ActorSNO, 2795, 2007, 0.2, 300)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2609" y="2039" z="0.1" name="11" />
+      </If>
+      <TrinityUseOnce id="6">
+        <If condition="ActorExistsAt(Me.ActorSNO, 2609, 2039, 0.1, 300)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2577" y="1916" z="0.1"  name="12" />
+        </If>
+      </TrinityUseOnce>
+      <If condition="ActorExistsAt(Me.ActorSNO, 2577, 1916, 0.1, 300)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2427" y="1922" z="0.1" name="13" />
+      </If>
+      <TrinityUseOnce id="7">
+        <If condition="ActorExistsAt(Me.ActorSNO, 2427, 1922, 0.1, 300)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2439" y="2021" z="0.1" name="14" />
+        </If>
+      </TrinityUseOnce>
+      <If condition="ActorExistsAt(Me.ActorSNO, 2439, 2021, 0.1, 300)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2500" y="2137" z="0.3" name="15" />
+      </If>
+      <TrinityUseOnce id="8">
+        <If condition="ActorExistsAt(Me.ActorSNO, 2500, 2137, 0.3, 300)">
+          <TrinityMoveTo questId="1" navigation="true" pathPrecision="40" x="2637" y="2229" z="0.1" name="16" />
+        </If>
+      </TrinityUseOnce>
+      <If condition="ActorExistsAt(Me.ActorSNO, 2637, 2229, 0.1, 300)">
+        <UseTownPortal questId="1" />
+        <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      </If>
+
+    </If>
+
+    <!--v^v^v^v^v^v^v-->
+    <LoadProfile profile="Misery.xml" nodelay="true" />
+  </Order>
+</Profile>

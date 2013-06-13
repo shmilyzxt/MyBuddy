@@ -1,0 +1,386 @@
+1.4.7
+Added a few extra safety checks / retries to some quests
+QuestTools 1.3.7:
+Fixed crashing related to clicking UI Elements
+Fixed clicking "Confirmation Dialog OK button" with MoveToActor/MoveToMapMarker (e.g. should now correctly click button if visible when teleporting out of dungeons)
+Completely rebuild ConfirmOK logic
+
+
+1.4.6
+Questools 1.3.6:
+Added a ton of crash safety checks in Plugin
+Added new DB Beta FireWorldTransferStart() method to prevent crashes when taking portals when using MoveToActor, MoveToMapMarker, ResumeUseTownPortal
+Disabled world/quest change logging
+
+
+1.4.5
+Included new "Restart Act" and appropriate relogger profile - useful for using YAR - will restart the bot on the current act if it crashes or leaves the game - very reliable
+Includes latest Trinity
+
+1.4.4
+Will now restart the Act if the profile cannot correctly resume the game (e.g. goes into a profile loading loop)
+Fixed all the "StartNew" profiles to actually start a new game if on the first quest (it was ignoring the quest step)
+QuestTools "Games/Hour" protection now correctly detects when the bot joins and leaves different games (rather than just profile changes)
+Fixes a few more stucks 
+
+1.4.3
+More stuck fixes (a lot near boss fights)
+Includes latest Trinity
+
+
+1.4.2
+
+All Acts:
+Added game resume handling for 1.0.7 patch (uses town portal on Resume games)
+
+Act 1:
+Fixed stuck in Caves of Aranae (Trinity bug really)
+
+
+
+1.4.1
+
+Act 1:
+Now supports "new games" for Imprisoned Angel - Find the chamber of Suffering
+Halls of Agony 2 and 3 are now optimized to find the exits
+Added death handling for entering the desolate chamber after killing the skeleton king and reviving in The Royal Crypts
+
+QuestTools 1.3.1
+Improvements to Navigation to reduce stuttering and backtracking
+
+
+1.4.0
+Now requires Trinity to be used (or at least installed as a plugin)
+Converted all ExploreArea tags to use the new TrinityDungeonExplorer for optimized runs / faster finding of exits
+- Profile makers may want to see how i've used these tags for examples!
+Removed all LeaveGame tags (no longer required, since, we should no longer get stuck!)
+
+Act 4:
+Optimized all random generated areas
+
+Act 3:
+Now Explores The Barracks Levels 1 and 2 in Act 3
+Stucks in Tower of the Damned Level 2 and Cursed Level 2
+
+Act 2:
+Now Explores more of Howling Plateu, Stinging Winds for champ packs, including some random dungeon spawns in Act 2
+Should now always find Zoltun Kulle's blood in cave and vault
+Stucks while attempting to find Cave of the Betrayer and Vault of the Assassin
+Stuck in Eastern Channel Flow Control
+
+Act 1:
+Improved Pathing / Reduced stucks in Festering Woods + added timeout for the CustomBehavior used here
+Added more locations to check for cultists in Wortham
+Fixed a stuck in case we somehow missed the first Beacon in the Broken Blade quest
+
+
+QuestTools 1.3.0
+Added a Navigator wrapper, that allows local client navigation in generated dungeons for MoveToMapMarker/MoveToActor/SafeMoveTo, and intelligently makes use of PathFinder or Navigator when needed
+Added straightLinePathing attributes to SafeMoveTo, MoveToActor, and MoveToMapMarker
+Now clicks the conversation X button if visible, should help with skipping most conversations
+
+
+
+1.2.2
+
+QuestTools 1.2.1
+Small delay added before advancing cutscenes and conversations
+
+1.2.1
+Fixed more stucks in all acts. Forgot to keep track, sorry! :)
+
+QuestTools 1.2.0
+New QuestToolsSetVariable tag, to enable/disable ReloadProfileOnDeath and Debug Logging
+Minor improvements to SafeMoveTo
+
+
+1.2
+Fixed stuck leaving A2 command post
+Fixed A3 end, A3 profile again correctly continues to Act 4.
+
+
+QuestTools 1.1.3
+Additional modifications to MoveToActor for reliability
+
+Trinity changenotes here: https://www.assembla.com/code/unifiedtrinity/git/nodes/master/README.md
+
+
+1.1.10
+Fixed stuck in Cave of the Betrayer when taking Dungeon Stone portal
+Fixed stuck in tower of the cursed level 2 (version 2)
+Fixed stuck when entering the first hell rift
+
+QuestTools 1.1.2
+Modified MoveToActor interaction Power usage (this should help with a lot of stucks on portals)
+
+1.1.9
+Profiles
+More stuck handling
+Added Death Handling for Zoltun Kulle Fight
+Added stuck handling for quest step trigger when first discovering the terminus if quest step doesn't change
+Added Death handling for Cydea fight
+Fixed stuck inside Khazra Den after killing cultists
+Added Death Handling for destroying Auriel's prison if we died with the boss
+Act3 Start profiles will now correctly start the Act if player is not at Bastions Keep Watchtower
+Added Death handling if we killed Butcher and died at the same time
+Added Death Handling for Khazra den, dying, restarting outside (will now re-enter Khazra den)
+Added Death Handling for Hidden Cellar / Adrias Hut
+Fixed rare weird stucks around the hidden cellar / adrias hut
+
+QuestTools
+Fixed MoveToActor with latest DB/D3
+
+1.1.8
+
+Trinity 1.7.0.5
+Fixed bug with burrowing units
+
+
+
+1.1.7
+Profiles
+Additional fixes for stucks and death handling in all acts
+
+Trinity 1.7.0.4
+New Settings Configuration code (thanks to HTI!)
+Fixed huge stashing bug. Sorry!
+Tuned up item valuation & stashing calculations (only applies to level 60's)
+Avoidance/Kiting should work better with waller affix
+darkfriend77 scripted item rules option added to GUI
+
+QuestTools
+Fixed bug with using some portals that lead to the same world (like A2 Eastern Flow Control to Ancient Waterway)
+
+
+
+1.1.6
+Profiles 1.1.2
+Added Bone Gate to blacklist in Diablo Arena
+Fixed new game handling for 1st quest in Prime Evil
+Fixed potential stuck in A2 Shadow Halls
+Fixed potential stuck at the end of using portla to Armory
+Improved relogger-compatible profile
+Added START profiles for All Acts and Difficulties
+Fixed distance check bug in MoveToActor
+
+Trinity 1.7.0.1
+Added additional logging for stucks and blacklisting
+Cleaned up comments a little
+Bot will no longer blacklist anything if playing a cutscene
+Added line of sight whitelist for healthwells for The Butcher and Diablo's arenas
+Converted more comments to XML Syntax
+Additional Refactoring of fields, properties and methods
+Hopefully Fixed Iron Gates A3 (these had a weird animation state)
+Hopefully fixed Pinata ActorSNO - should now treat it as a resplendant chest
+
+GilesEquipper 1.7.2
+Now properly identifies items when it's supposed to
+
+QuestTools 1.1.1
+Added profile behavior timeout, will reload the profile if any profile tag exceeds its allocated time
+Cleaned up and improved MoveToMapMarker (interactions, actor assignments, "ping" marker searching, stuck handling)
+
+
+
+1.1.5
+
+Profiles 1.1.1
+
+Trinity x8
+Added Skeleton King to Boss list
+Included Bombastic's Sweeping Wind Inna stuff http://www.thebuddyforum.com/demonbuddy-forum/plugins/giles-plugins/84238-unified-gilesplugins-unnoficial-updates-file-66.html#post886603
+
+
+
+
+1.1.4
+
+Profiles 1.1.0
+Actually fixed death handling for Heart of the Damned
+Improved Nav for Heart of the Damned
+Added Relogger Profile - use this with a relogger: AllActs_Relogger.xml
+
+Trinity x7
+Merged with Unified v43
+Additional Fixes and checks for Monk Wave of Light
+Added a little Boss 15 sec Blacklist logic (hopefully fixing stucks in A4)
+Cleaned up VendorRun BehaviorTrees (old code to be removed later)
+Refactored AbilitySelector into Class-specific files
+Fixed rare bug when flip-flopping targets after attempting to open a chest
+Will no longer blacklist an avoidance if the ActorSNO is in both blacklist and avoidance lists (like if a blacklist entry was added through a profile)
+Added WhimsyShire Pinata to loot container whitelist (211861)
+Fixed Attempting to do Vendor/Town Run with monsters nearby
+Added fix for Diablo Shadow Clone's - now recognized as bosses
+
+1.1.3
+Including .csproj files in zip file
+
+Trinity x6
+Actually fixed Barb WW ZigZag on stairs / Z axis thing :)
+More Kiting improvements!
+Fixed boss LoS bug introduced in x5
+Fixed avoidance radius dictionary key bug
+
+Profiles 1.0.9
+Fixed questId in a MoveTo for Act2 / Scouring of Caldeum
+
+
+Profiles 1.0.8
+Fixed death handling for Heart of Sin / Destroy the Sin Heart
+Now loads Act1_rrrix.xml after killing Diablo, which is always automatically uses the next available difficulty.
+Converted all TalkTo tags to MoveToActor
+
+Trinity x5
+Now using PathFinding mechanism instead of LoS for target viability
+Fixed projectile avoidance
+Improved a few Demonhunter abilities 
+Improved Kiting some more (will no longer attempt to kite through enemies)
+Should now use HealthWells in Diablo's Arena
+Avoidance for Diablo Fire circles, projectiles, lightning breath added
+
+QuestTools 1.0.9
+Refactored SafeMoveTo, MoveToActor with some new BehaviorTree tricks (thanks Nesox for the examples ;))
+
+DestroyBarricades 1.0.6
+Now replaces DB's default ObstacleTargetting 
+
+----
+
+Profiles 1.0.7
+All acts: Added additional blacklist items for un-openable doors and other random non-interactable objects
+A2: Added more death handling for storm halls/terminus/realm of shadow
+A3: Fixed stuck for Ghom; Added adjustment for entering The Larder with slow quest step update
+A4: Fixed stuck right before Diablo fight
+
+Trinity x4
+Kiting now actually works!
+Adjusted Kiting defaults for WD, and Wiz to 10, DH to 15
+Fixed blacklisting
+Re-added logic to ignore anything that's not in LoS. LoS issues cause too many stucks in dungeons.
+Minor improvements on ZigZag algorithm
+Added Queen Araneae to boss list
+
+QuestTools 1.0.8
+Turned off debug logging
+Turned off reload profile on death
+
+----
+
+Profiles 1.0.6
+All acts: Added additional blacklist items for un-openable doors and other random non-interactable objects
+A1: Fixed stuck after exiting the Crypt of the Ancients, moving to find the Warriors Rest
+A1: Improved killing "the returned" before skeleton king
+A2: Fixed LeaveGame bug when moving from Ruined Cistern to Path to the Oasis
+A2: Fixed stuck in portal transition from Eastern Flow Control => Ancient Waterway => Waterlogged Passage
+A2: Fixed resume handling for Shadows in the Desert
+A2: Fixed nav-server stuck after talking to Ashera for Shadows in the Desert, will now use local nav
+A3: Fixed an out-of-order MoveTo tag in Rakkis Crossing
+A3: Added bot/stop start handling inbetween Catapults in Stonefort
+A4: Fixed stucks finding corrupt growths in Act 4 Gardens of Hope 1st Tier
+
+Trinity 1.6.3.4 v41 x3
+Fixed diagnostic status text bug
+Adjusted Unstucker timer, added additional non-stuck conditions (conversation, scenes, loading world, WaitTimer, vendoring)
+Fixed opening doors and breaking barricades... hopefully forever!
+Improved destructables handling
+Fixed Barbarian Weapon Throw (now only uses when target is ranged and has > 10 fury)
+Fixed HealthWell weighting (hopefully) and blacklisting
+Added Target change logging
+Adjusted Trinity defaults to accomodate questing setup - will now pickup all blue/yellow items + crafting tomes + all gold piles
+Fixed target range check bug
+Fixed physics check bug for barricades and destructables
+Merged all changes from Unified GilesTrinity v41 http://www.thebuddyforum.com/demonbuddy-forum/plugins/giles-plugins/84238-unified-gilesplugins-unnoficial-updates-file.html
+
+QuestTools 1.0.7
+Made SafeMoveTo slightly less noisy in the logs
+Changed QuestTools LogLevel status changes to Verbose
+Added an additional CustomBehavior for A1 The Broken Blade, getting stuck after leaving Crypt of the Ancients
+Fixed bot not attacking while attempting to interact with objects
+
+----
+
+Profiles 1.0.5
+Fixed GameParams
+
+
+Trinity
+Improved unstuck behavior
+Added additional blacklist items
+Added additional Boss SNO's
+Will no longer target NPC's
+Added a ton of optional debug logging
+
+
+QuestTools 1.0.6
+Fixed a interaction delay bug
+Fixed a portal use bug
+Added endAnimation attribute to MoveToActor, useful for checking the animation state of objects (e.g. cages, gears, and gizmos)
+Fixed Dump Actor Attributes button NullPointerExceptions
+Performance improvements
+Stuck handling improvements
+
+----
+
+Profiles 1.0.4
+
+Act1:
+Fixed a stuck-ish bug when entering the Skeleton King throne room
+Added 2 more Prisoners Remains locations for The Imprisoned Angel - Prisoners Remains
+Fixed weird bug interacting with Khazra staff on the cart
+Fixed a possible stuck entering Leoric's Passage when rescuing Cain
+
+Act2:
+Fixed pathing/stuck problem in Waterlogged passage before killing the betrayed
+Hidden Aquaducts explorer now uses ignoreGridReset
+
+Act3:
+Changed to UsePortal tag for finding the exit for Act3: Ghom
+
+Act4:
+Should now always find all the corrupt growths and correctly move to the Hell Rift portal. Hell Rift Portal death handling improved.
+
+----
+
+
+QuestTools 1.0.5
+Added my own custom "Dump Actor Attribs" button under the Info Dumping tab, which dumps actors and their attributes.
+Updated and supports DemonbuddyBETA 1.0.1145.70, now requires BETA .70
+
+
+Profiles 1.0.3
+Act 1:
+Fixed more stucks/added blacklist items for Belphegor in Halls of Agony
+Fixed a stuck in Southern Highlands searching for Khazra Staff
+Added another position for The Imprisoned Angel: Prisoners Remains
+
+Act2: 
+Improved death handling for Quest: City of Blood, Step: Find Alcarnus
+Fixed a stuck in Storm Halls
+
+Act3: 
+Added an additional Demonic Ballistae spawn point
+
+Act 4: 
+Added more blacklist items for Belphegor
+Fixed a bug where player wouldn't talk to Tyrael and open the portal to the Crystal Colonnade
+
+---
+
+1.0.2
+Started testing for Belphegor Compatability
+
+Act1: 
+Fixed musty cellar
+Added a bunch of Blacklist units/objects in Cathedral for Belphegor compatability
+Fixed a stuck after killing Jondar
+
+Act2: 
+Fixed a stuck in eastern channel
+Fixed a stuck when changing from Storm Halls
+Fixed a stuck after killing Zoltun Kulle
+
+
+Tweaked Trinity object cache handling
+
+
+

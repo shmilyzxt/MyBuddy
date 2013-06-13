@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Profile xmlns="http://tempuri.org/ProfileSchema.xsd" xmlns:xsi="http://tempuri.org/ProfileSchema.xsd">
+  <!--
+  This profile act's human based on advanced parameters placed by Trinity, and the hard working Dev's of Demonbuddy.
+ Lots of sweat and blood went into this profile set(s) and I hope everyone who uses it remembers that.
+ If a stuck happens to be found. Congratulations!!!! See below on how to attach a log.
+ Or send me a private message with a very detailed description of where you were and what happened.
+
+ Thank you,
+ ~FallenDev
+ -->
+  <Name>Fallen Profile</Name>
+  <GameParams quest="136656" step="-1" act="A1" difficulty="Inferno" resumeFromSave="False" isPrivate="True" numGames="-1" />
+  <TargetBlacklists>
+    <!--rrrix blacklist-->
+    <TargetBlacklist actorId="79421" />
+    <TargetBlacklist actorId="177439" />
+    <TargetBlacklist actorId="167185" />
+    <TargetBlacklist actorId="102927" />
+    <TargetBlacklist actorId="144149" />
+    <TargetBlacklist actorId="92387" />
+    <TargetBlacklist actorId="104545" />
+    <TargetBlacklist actorId="108266" />
+    <TargetBlacklist actorId="86624" />
+    <TargetBlacklist actorId="109209" />
+    <TargetBlacklist actorId="5723" />
+    <TargetBlacklist actorId="156058" />
+    <TargetBlacklist actorId="90419" />
+    <TargetBlacklist actorId="105321" />
+    <TargetBlacklist actorId="102711" />
+    <TargetBlacklist actorId="105323" />
+    <TargetBlacklist actorId="58568" />
+    <TargetBlacklist actorId="3949" />
+    <TargetBlacklist actorId="5717" />
+    <TargetBlacklist actorId="58568" />
+    <TargetBlacklist actorId="5740" />
+    <TargetBlacklist actorId="158944" />
+    <TargetBlacklist actorId="167311" />
+    <TargetBlacklist actorId="89579" />
+    <TargetBlacklist actorId="89578" />
+    <TargetBlacklist actorId="170913" />
+    <TargetBlacklist actorId="5895" />
+    <TargetBlacklist actorId="5896" />
+    <TargetBlacklist actorId="5898" />
+    <TargetBlacklist actorId="5900" />
+    <TargetBlacklist actorId="116752" />
+    <TargetBlacklist actorId="108882" />
+    <TargetBlacklist actorId="206461" />
+    <TargetBlacklist actorId="105361" />
+    <TargetBlacklist actorId="168875" />
+    <TargetBlacklist actorId="6640" />
+    <!--Tombstones-->
+    <TargetBlacklist actorId="6158" />
+    <TargetBlacklist actorId="6159" />
+    <TargetBlacklist actorId="74909" />
+    <!--Alcove-->
+    <TargetBlacklist actorId="85690" />
+    <!--Female Zombie-->
+    <TargetBlacklist actorId="6640" />
+    <!--Pillar-->
+    <TargetBlacklist actorId="104632" />
+    <TargetBlacklist actorId="105303" />
+    <!--Stone-->
+    <TargetBlacklist actorId="179951" />
+  </TargetBlacklists>
+  <Order>
+
+    <!--Restart Game **Asks if your still in Fields of Misery, then corrects it's course.**-->
+
+    <If condition="ZetaDia.CurrentLevelAreaId == 19952">
+      <LeaveGame reason="Hope everything ran correctly! Restarting soon." />
+    </If>
+
+    <!--Start Sequence-->
+
+    <LogMessage message="-=Fallen Run Now Starting=-" />
+    <LoadProfile profile="Agony2.xml" nodelay="true" />
+  </Order>
+</Profile>

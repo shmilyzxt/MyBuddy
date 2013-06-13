@@ -1,0 +1,33 @@
+[ItemRules2] Gnillers Super-Tight Loot Rules
+
+-- 1.1.1
+- Fixed [ARMOR] is now [ARMORBONUS] in @GNILLERMSD; no longer counts default item armor value (should result in less crap legs/feet/belts stashed)
+
+- Added multiplicative calculation for weapon offensive stats
+	@GNILLEROSM := (([CRITDMG%]/100)+[SOCKETS]+([LOH]/1000)+([LS%]/3)+([MAXSTAT]/400)+([VIT]/600))
+	@GNILLERWEP := (([DPS]+(([CRITDMG%]+([SOCKETS]*100)+([LOH]/100)+([LS%] * 40)+([MAXSTAT]/4)+([VIT]/6))*[@GNILLEROSM]))*([DPS]/1000))
+	The idea: The more offensive stats present on the weapon, the more all of them are worth
+		- weapons with less than 1 offstat maxed out (on one handers) are worth less than they used to
+		- 2hander rulesets may need thighening as offstats can be higher, testing to be done.
+	Example: 1100 DPS weapon with 100% critdmg and a socket, used to be valued 1430 - now valued 1650.
+
+-- 1.1.0
+- Slightly tightened Immortal Kings Irons rule (16% increase, still lower than rare hands)
+- Slightly improved the value of Lifesteal% on all weapon types (14.3% increase)
+- Immortal King's Stride tightened (~20% increase)
+- Rewrote Hellcat Waistguard loot rule
+
+- Removed pickup rules for crafting plans/reagents, trinity settings should handle these
+- Rare amulet pickup rule untightend by 1 item level (now picks up 61)
+
+- Fixed an issue in Mempho of Twilight and Immortal King's Triumph ([PICKUP] changed to [PICKRAD])
+- Ivory Tower now matches Stormshield rule (hopefully another issue is solved by this)
+- Tzo Krin's Gaze now stashes on dex instead of int
+
+- Added calculation @GNILLERMSD (MaxStat+Defences), designed to simplify loot rules for legs, chests etc.
+	@GNILLERMSD := ([MAXSTAT]+([VIT]*0.8)+([ALLRES]*2)+([ARMOR]*0.2)+([LIFE%]*5)+([SOCKETS]*40))
+- Reworked legendary legs/feet/belts for new calculation usage
+- Code cleaned, commented "old" rules and unused calculations removed (may give a tiny performance increase when judging bag, problaly not noticable)
+
+-- 1.0.0
+- Initial public release

@@ -1,0 +1,118 @@
+<Profile>
+    <Name>Tinnkaizer 0.9 - Rakkis Crossing and Fields of Slaughter</Name>
+    <KillMonsters>True</KillMonsters>
+    <PickupLoot>True</PickupLoot>
+    <GameParams quest="101758" step="1" act="A3" difficulty="Inferno" resumeFromSave="True" isPrivate="True" numGames="-1"  />
+    <Order>
+        <!-- Rakkis Crossing and Fields of Slaughter Section -->
+        <While condition="(CurrentLevelAreaId != 69504) and (CurrentLevelAreaId != 112565) and (CurrentLevelAreaId != 155048)">
+            <!-- TotD 1 -->
+            <If condition="CurrentLevelAreaId == 80791">
+                <MoveTo questId="101758" stepId="1" x="1040.822" y="989.6584" z="-9.9" pathPrecision="5" name="WP Double Check" />
+                <UseWaypoint questId="101758" stepId="1" actorId="6442" x="1040.822" y="989.6584" z="-9.9" waypointNumber="5" />
+            </If>
+
+            <!-- TotC 1 -->
+            <If condition="CurrentLevelAreaId == 119653">
+                <MoveTo questId="101758" stepId="1" x="958.845" y="1097.812" z="-9.899994" pathPrecision="5" name="WP Double Check" />
+                <UseWaypoint questId="101758" stepId="1" actorId="6442" x="958.845" y="1097.812" z="-9.899994" waypointNumber="5" />
+            </If>
+
+            <!-- Keeps 3 -->
+            <If condition="CurrentLevelAreaId == 136448">
+                <MoveTo questId="101758" stepId="1" actorId="6442" pathPrecision="5" name="WP Double Check" />
+                <UseWaypoint questId="101758" stepId="1" actorId="6442" waypointNumber="5" />
+            </If>
+
+            <!-- AC 1 -->
+            <If condition="CurrentLevelAreaId == 86080">
+                <MoveTo questId="101758" stepId="1" actorId="6442" pathPrecision="5" name="WP Double Check" />
+                <UseWaypoint questId="101758" stepId="1" actorId="6442" waypointNumber="5" />
+            </If>
+
+            <If condition="not ActorExistsAt(6442, Me.Position.X, Me.Position.Y, Me.Position.Z, 100)">
+                <LogMessage message="[Tinnkaizer] Couldn't find any WP, going back to Town" />
+                <While condition="not Me.IsInTown">
+                    <UseTownPortal questId="101758" stepId="1" />
+                </While>
+            </If>
+
+            <If condition="Me.IsInTown">
+                <UseWaypoint questId="101758" stepId="1" actorId="6442" x="402.5403" y="414.342" z="1.5338" waypointNumber="5" />
+            </If>
+        </While>
+
+        <!-- FoS Death Checkpoint -->
+        <If condition="ActorExistsAt(3795, Me.Position.X, Me.Position.Y, Me.Position.Z, 40) and CurrentLevelAreaId == 69504">
+            <TrinityMoveTo questId="101758" stepId="1" x="2867.943" y="600.9689" z="0.1219977" pathPrecision="10" unsafeRandomDistance="5" />
+        </If>
+
+        <!-- Rakkis Crossing -->
+        <If condition="ActorExistsAt(6442, Me.Position.X, Me.Position.Y, Me.Position.Z, 40) and CurrentLevelAreaId == 69504">
+            <LogMessage message="[Tinnkaizer] Clearing Rakkis Crossing WP to Fields of Slaughter" />
+            <TrinityMoveTo questId="101758" stepId="1" x="1363.45" y="606.2227" z="-24.43613" pathPrecision="15" unsafeRandomDistance="5" />
+        </If>
+
+        <!-- Bridge Stores Door -->
+        <If condition="MarkerExistsAt(750770355, Me.Position.X, Me.Position.Y, Me.Position.Z, 20) and CurrentWorldId == 95804">
+            <LogMessage message="[Tinnkaizer] Going inside Bridge Store" />
+            <While condition="CurrentWorldId == 95804">
+                <UsePortal questId="101758" stepId="1" portalMarkerHash="750770355" destinationWorldId="205422" interactRange="20" />
+            </While>
+        </If>
+
+        <!-- Bridge Stores with elite-->
+        <If condition="CurrentWorldId == 205422">
+            <WaitTimer questId="101758" stepId="1" waitTime="50" />
+            <LogMessage message="[Tinnkaizer] Elites inside of Bridge Store" />
+        </If>
+
+        <If condition="CurrentWorldId == 205422">
+            <TrinityMoveTo questId="1" x="169.0612" y="43.08964" z="-11.74208" pathPrecision="10" />
+            <TrinityMoveTo questId="1" x="168.532" y="83.84311" z="-24.31951" pathPrecision="10" />
+            <TrinityMoveTo questId="1" x="112.8717" y="39.71693" z="0.6467981" pathPrecision="10" />
+        </If>
+
+        <While condition="CurrentWorldId == 205422">
+            <UseObject questId="101758" stepId="1" actorId="176001" isPortal="true" x="94.25379" y="40.16687" z="1.696674" portalMarkerHash="1073495552" destinationWorldId="95804" interactRange="20" />
+
+            <If condition="CurrentWorldId == 95804">
+                <WaitTimer questId="1" waitTime="50" />
+                <LogMessage message="[Tinnkaizer] Bridge Store cleared. Heading down to Field of Slaughter" />
+            </If>
+        </While>
+
+        <If condition="CurrentLevelAreaId == 69504">
+            <TrinityMoveTo questId="101758" stepId="1" x="2757.592" y="610.0878" z="0.3885002" pathPrecision="10" unsafeRandomDistance="5" />
+        </If>
+
+        <!-- Fields of Slaughter -->
+        <If condition="CurrentLevelAreaId == 112565">
+            <LogMessage message="[Tinnkaizer] Clearing Fields of Slaughter to Bridge of Korsikk WP" />
+            <TrinityMoveTo questId="101758" stepId="1" x="2869.344" y="604.7413" z="0.1090655" pathPrecision="10" unsafeRandomDistance="5" name="FoS-1" />
+            <TrinityMoveTo questId="101758" stepId="1" x="2880.414" y="730.1259" z="0.1000001" pathPrecision="10" unsafeRandomDistance="5" name="FoS-2" />
+            <TrinityMoveTo questId="101758" stepId="1" x="3009.866" y="850.5529" z="0.1" pathPrecision="10" unsafeRandomDistance="5" name="FoS-3" />
+            <TrinityMoveTo questId="101758" stepId="1" x="3276.776" y="848.9924" z="0.1" pathPrecision="10" unsafeRandomDistance="5" name="FoS-4" />
+            <TrinityMoveTo questId="101758" stepId="1" x="3396.597" y="762.3685" z="0.100001" pathPrecision="10" unsafeRandomDistance="5" name="FoS-5" />
+            <TrinityMoveTo questId="101758" stepId="1" x="3366.644" y="702.3302" z="0.1199211" pathPrecision="10" unsafeRandomDistance="5" name="FoS-6" />
+            <TrinityMoveTo questId="101758" stepId="1" x="3204.021" y="736.8077" z="0.1" pathPrecision="10" unsafeRandomDistance="5" name="FoS-7" />
+            <TrinityMoveTo questId="101758" stepId="1" x="3042.764" y="725.085" z="0.1" pathPrecision="10" unsafeRandomDistance="5" name="FoS-8" />
+            <TrinityMoveTo questId="101758" stepId="1" x="3071.877" y="507.461" z="0.09999812" pathPrecision="10" unsafeRandomDistance="5" name="FoS-9" />
+            <TrinityMoveTo questId="101758" stepId="1" x="2854.971" y="483.769" z="0.1000005" pathPrecision="10" unsafeRandomDistance="5" name="FoS-10" />
+            <TrinityMoveTo questId="101758" stepId="1" x="3048.703" y="356.1689" z="0.1" pathPrecision="10" unsafeRandomDistance="5" name="FoS-11" />
+            <TrinityMoveTo questId="101758" stepId="1" x="3226.081" y="464.8517" z="0.1000001" pathPrecision="10" unsafeRandomDistance="5" name="FoS-12" />
+            <TrinityMoveTo questId="101758" stepId="1" x="3367.065" y="210.143" z="0.1942807" pathPrecision="10" unsafeRandomDistance="5" name="FoS-13" />
+            <TrinityMoveTo questId="101758" stepId="1" x="3466.391" y="422.1526" z="0.1569475" pathPrecision="10" unsafeRandomDistance="5" name="FoS-14" />
+            <TrinityMoveTo questId="101758" stepId="1" x="3367.021" y="424.9278" z="0.1000322" pathPrecision="10" unsafeRandomDistance="5" name="FoS-15" />
+            <TrinityMoveTo questId="101758" stepId="1" x="3365.502" y="515.7537" z="0.1000008" pathPrecision="10" unsafeRandomDistance="5" name="FoS-16" />
+            <TrinityMoveTo questId="101758" stepId="1" x="3247.251" y="512.408" z="0.2000004" pathPrecision="10" unsafeRandomDistance="5" name="FoS-17" />
+            <TrinityMoveTo questId="101758" stepId="1" x="3241.162" y="632.1185" z="0.100001" pathPrecision="10" unsafeRandomDistance="5" name="FoS-18" />
+            <TrinityMoveTo questId="101758" stepId="1" x="3342.233" y="606.5936" z="0.200001" pathPrecision="10" unsafeRandomDistance="5" name="FoS-19" />
+
+            <!-- Move to WP -->
+            <TrinityMoveTo questId="101758" stepId="1" x="3453.901" y="609.0917" z="0.3065131" pathPrecision="5" name="Bridge of Korsikk WP" />
+        </If>
+
+        <LoadProfile profile="Tinnkaizer.xml" />
+    </Order>
+</Profile>

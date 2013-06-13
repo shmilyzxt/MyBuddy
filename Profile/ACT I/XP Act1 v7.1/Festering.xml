@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Profile xmlns="http://tempuri.org/ProfileSchema.xsd" xmlns:xsi="http://tempuri.org/ProfileSchema.xsd">
+  <Name>Fallen Festering Woods</Name>
+  <GameParams quest="136656" step="-1" act="A1" difficulty="Inferno" resumeFromSave="False" isPrivate="True" numGames="-1" />
+  <KillMonsters>True</KillMonsters>
+  <PickupLoot>True</PickupLoot>
+  <Order>
+
+    <If condition="not ZetaDia.CurrentLevelAreaId == 19953">
+      <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      <UseTownPortal questId="1" />
+      <WaitTimer questId="1" stepId="1" waitTime="1000" />
+    </If>
+
+    <!--Off to Festering Woods-->
+
+    <While condition="ZetaDia.CurrentLevelAreaId == 19947">
+      <LogMessage message="In Town?" />
+      <UseWaypoint questId="1" stepId="1" actorId="6442" x="2981.730" y="2835.009" z="24.908" waypointNumber="9" />
+      <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      <LogMessage message="Fallen Festering Woods" />
+    </While>
+
+    <!--Festering v6.1-->
+
+    <While condition="ZetaDia.CurrentLevelAreaId == 19953">
+      <!--Ancients 1-->
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="601" y="907" z="20" unsafeRandomDistance="5" name="Ancients" />
+      <If condition="ActorExistsAt(176008, 546, 877, 16, 150)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="581" y="921" z="20" unsafeRandomDistance="5" name="A1-1" />
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="568" y="913" z="20" unsafeRandomDistance="5" name="A1-2" />
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="562" y="902" z="17" unsafeRandomDistance="5" name="A1-3" />
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="559" y="888" z="16" unsafeRandomDistance="5" name="A1-4" />
+        <UseObject questId="1" stepId="1" actorId="176008" isPortal="True" destinationWorldId="60394" />
+        <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      </If>
+      <!--Ancients 2-->
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="434" y="965" z="20" unsafeRandomDistance="5" name="Ancients" />
+      <If condition="ActorExistsAt(176008, 428, 878, 16, 150)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="476" y="928" z="20" unsafeRandomDistance="5" name="A2-1" />
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="452" y="919" z="20" unsafeRandomDistance="5" name="A2-2" />
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="441" y="901" z="16" unsafeRandomDistance="5" name="A2-3" />
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="438" y="885" z="16" unsafeRandomDistance="5" name="A2-4" />
+        <UseObject questId="1" stepId="1" actorId="176008" isPortal="True" destinationWorldId="60394" />
+        <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      </If>
+      <!--Ancients 3-->
+      <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="352" y="908" z="20" unsafeRandomDistance="5" name="Ancients" />
+      <If condition="ActorExistsAt(176008, 307, 876, 16, 150)">
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="339" y="921" z="20" unsafeRandomDistance="5" name="A3-1" />
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="325" y="898" z="18" unsafeRandomDistance="5" name="A3-2" />
+        <TrinityMoveTo questId="1" navigation="true" pathPrecision="30" x="323" y="887" z="17" unsafeRandomDistance="5" name="A3-3" />
+        <UseObject questId="1" stepId="1" actorId="176008" isPortal="True" destinationWorldId="60394" />
+        <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      </If>
+    </While>
+
+    <!--v^v^v^v^v^v^v-->
+
+    <LoadProfile profile="Ancients.xml" nodelay="true" />
+  </Order>
+</Profile>

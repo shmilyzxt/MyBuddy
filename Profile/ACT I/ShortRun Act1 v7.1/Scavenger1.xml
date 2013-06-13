@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Profile xmlns="http://tempuri.org/ProfileSchema.xsd" xmlns:xsi="http://tempuri.org/ProfileSchema.xsd">
+  <Name>Fallen Scavenger's Den</Name>
+  <GameParams quest="136656" step="-1" act="A1" difficulty="Inferno" resumeFromSave="False" isPrivate="True" numGames="-1" />
+  <KillMonsters>True</KillMonsters>
+  <PickupLoot>True</PickupLoot>
+  <Order>
+
+    <While condition="Me.IsInTown">
+      <LoadProfile profile="Misery.xml" nodelay="true" />
+    </While>
+
+    <!--Trinity Explore-->
+
+    <If condition="ZetaDia.CurrentWorldId == 81163">
+      <WaitTimer questId="1" stepId="1" waitTime="1000" />
+      <TrinityExploreDungeon questId="1" stepId="1" boxSize="40" boxTolerance="0.03" pathPrecision="20" markerDistance="12"
+                             endType="ExitFound" exitNameHash="925091455" objectDistance="200">
+        <PrioritizeScenes>
+          <PrioritizeScene sceneName="Exit" />
+        </PrioritizeScenes>
+      </TrinityExploreDungeon>
+      <UseObject questId="1" stepId="1" actorId="176038" isPortal="True" interactRange="20" destinationWorldId="81164" />
+      <WaitTimer questId="1" stepId="1" waitTime="1500" />
+      <LoadProfile profile="Scavenger2.xml" nodelay="true" />
+    </If>
+
+    <!--v^v^v^v^v^v^v-->
+
+  </Order>
+</Profile>

@@ -1,0 +1,78 @@
+<Profile>
+    <Name>Tinnkaizer 0.9 - Arreat Crater Level 2</Name>
+    <KillMonsters>True</KillMonsters>
+    <PickupLoot>True</PickupLoot>
+    <GameParams quest="101758" step="1" act="A3" difficulty="Inferno" resumeFromSave="True" isPrivate="True" numGames="-1"  />
+    <Order>
+        <!-- Arreat Crater 2 Section -->
+        <While condition="(CurrentLevelAreaId != 119305) and (CurrentLevelAreaId != 119653)">
+            <!-- TotD 1 -->
+            <If condition="CurrentLevelAreaId == 80791">
+                <MoveTo questId="101758" stepId="1" x="1040.822" y="989.6584" z="-9.9" pathPrecision="5" name="WP Double Check" />
+                <UseWaypoint questId="101758" stepId="1" actorId="6442" x="1040.822" y="989.6584" z="-9.9" waypointNumber="8" />
+            </If>
+
+             <!-- FoS/Bridge of Korsikk -->
+            <If condition="(CurrentLevelAreaId == 155048) or (CurrentLevelAreaId == 112565)">
+                <MoveTo questId="101758" stepId="1" x="3452.229" y="609.7181" z="0.3065126" pathPrecision="5" name="WP Double Check" />
+                <UseWaypoint questId="101758" stepId="1" actorId="6442" x="3452.229" y="609.7181" z="0.3065126" waypointNumber="8" />
+            </If>
+
+            <!-- Keeps 3 -->
+            <If condition="CurrentLevelAreaId == 136448">
+                <MoveTo questId="101758" stepId="1" actorId="6442" pathPrecision="5" name="WP Double Check" />
+                <UseWaypoint questId="101758" stepId="1" actorId="6442" waypointNumber="8" />
+            </If>
+
+            <!-- AC 1 -->
+            <If condition="CurrentLevelAreaId == 86080">
+                <MoveTo questId="101758" stepId="1" actorId="6442" pathPrecision="5" name="WP Double Check" />
+                <UseWaypoint questId="101758" stepId="1" actorId="6442" waypointNumber="8" />
+            </If>
+
+            <If condition="not ActorExistsAt(6442, Me.Position.X, Me.Position.Y, Me.Position.Z, 100)">
+                <LogMessage message="[Tinnkaizer] Couldn't find any WP, going back to Town" />
+                <While condition="not Me.IsInTown">
+                    <UseTownPortal questId="101758" stepId="1" />
+                </While>
+            </If>
+
+            <If condition="Me.IsInTown">
+                <UseWaypoint questId="101758" stepId="1" actorId="6442" x="402.5403" y="414.342" z="1.5338" waypointNumber="8" />
+            </If>
+        </While>
+
+        <!-- Arreat Crater Level 2 -->
+        <If condition="CurrentLevelAreaId == 119305">
+            <LogMessage message="[Tinnkaizer] Clearing Arreat Crater Level 2 from WP to Exit" />
+            <TrinityExploreDungeon questId="101758" stepId="1" until="ExitFound" exitNameHash="43541786" boxSize="30" boxTolerance="0.15" timeoutType="GoldInactivity" timeoutValue="60" townPortalOnTimeout="True">
+                <PrioritizeScenes>
+                    <PriorityScene sceneName="Exit" />
+                </PrioritizeScenes>
+                <IgnoreScenes>
+                    <IgnoreScene sceneName="Entrance" />
+                </IgnoreScenes>
+            </TrinityExploreDungeon>
+
+            <If condition="Me.IsInTown">
+                <LogMessage message="[Tinnkaizer] Got stuck in Arreat Crater Level 2, moving on..." />
+            </If>
+
+            <!-- Exit to Tower of the Cursed Level 1 -->
+            <If condition="not Me.IsInTown">
+                <While condition="CurrentLevelAreaId == 119305">
+                    <UsePortal questId="101758" stepId="1" portalMarkerHash="43541786" destinationWorldId="119641" interactRange="25" />
+                </While>
+            </If>
+        </If>
+
+        <!-- Tower of the Cursed Level 1 -->
+        <If condition="CurrentLevelAreaId == 119653">
+            <!-- Move to WP to Stonefort -->
+            <LogMessage message="[Tinnkaizer] Taking Tower of the Cursed Level 1 WP" />
+            <MoveTo questId="101758" stepId="1" x="958.3962" y="1097.457" z="-9.899994" pathPrecision="5" name="TotC-WP"/>
+        </If>
+
+        <LoadProfile profile="Tinnkaizer.xml" />
+    </Order>
+</Profile>

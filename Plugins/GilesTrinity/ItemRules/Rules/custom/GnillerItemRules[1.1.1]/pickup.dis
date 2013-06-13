@@ -1,0 +1,85 @@
+// +---------------------------------------------------------------------------+
+// |  ______ _______ ______ __  __      _______ ______ 
+// | |   __ \_     _|      |  |/  |    |   |   |   __ \
+// | |    __/_|   |_|   ---|     <     |   |   |    __/
+// | |___|  |_______|______|__|\__|    |_______|___|   
+// | ++++++++++++++++++++++++++++++++++++++++++++++++++
+// +---------------------------------------------------------------------------+                                                 
+
+// +---------------------------------------------------------------------------+
+// |  _______ ______ _______ ______ _______ _______ _____   
+// | |     __|   __ \    ___|      |_     _|   _   |     |_ 
+// | |__     |    __/    ___|   ---|_|   |_|       |       |
+// | |_______|___|  |_______|______|_______|___|___|_______|
+// +---------------------------------------------------------------------------+                                               
+
+// craftingPlans on the ground have all quality normal cant decide here
+//[TYPE] == "CraftingPlan" -> [IGNORE]
+
+// craftingReagents like Demonic Essences
+//[TYPE] == "CraftingReagent" -> [IGNORE]
+
+// +---------------------------------------------------------------------------+
+// |  _____   _______ _______ _______ _______ _____  _______ ______ ___ ___ 
+// | |     |_|    ___|     __|    ___|    |  |     \|   _   |   __ \   |   |
+// | |       |    ___|    |  |    ___|       |  --  |       |      <\     / 
+// | |_______|_______|_______|_______|__|____|_____/|___|___|___|__| |___|                                                                     
+// +---------------------------------------------------------------------------+
+[QUALITY] == "Legendary"  && [LEVEL] > 61
+[QUALITY] == "Legendary"  && [LEVEL] > 59 && [TYPE] == "Jewelry"
+//ignore rule               
+[QUALITY] == "Legendary" && [LEVEL] <= 59 -> [IGNORE]
+
+// +--------------------------------------------------------------------------------------+
+// |  ______ _______ ______ _______ 
+// | |   __ \   _   |   __ \    ___|
+// | |      <       |      <    ___|
+// | |___|__|___|___|___|__|_______|                     
+// +--------------------------------------------------------------------------------------+
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Weapon" && [TYPE] == "Wand" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Weapon" && [TYPE] == "CeremonialDagger" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Weapon" && [TYPE] == "MightyWeapon" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Weapon" && [TYPE] == "HandCrossbow" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Weapon" && [TYPE] == "FistWeapon" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Weapon" && [TYPE] == "Diabo" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Weapon" && [TYPE] == "Staff" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] > 62  && [BASETYPE] == "Weapon"
+//ignore rule
+[QUALITY] == "Rare"  && [LEVEL] <= 62 && [BASETYPE] == "Weapon" -> [IGNORE]
+
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Armor" && [TYPE] == "WizardHat" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Armor" && [TYPE] == "VoodooMask" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Armor" && [TYPE] == "MightyBelt" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Armor" && [TYPE] == "SpiritStone" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Armor" && [TYPE] == "Helm" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Armor" && [TYPE] == "Shoulder" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Armor" && [TYPE] == "Chest" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Armor" && [TYPE] == "Cloak" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Armor" && [TYPE] == "Bracer" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Armor" && [TYPE] == "Legs" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Armor" && [TYPE] == "Boots" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Armor" && [TYPE] == "Quiver" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] <= 63 && [BASETYPE] == "Armor" && [TYPE] == "Shield" -> [IGNORE]
+
+[QUALITY] == "Rare"  && [LEVEL] > 62  && [BASETYPE] == "Armor"
+//ignore rule
+[QUALITY] == "Rare"  && [LEVEL] <= 62 && [BASETYPE] == "Armor"  -> [IGNORE]
+
+[QUALITY] == "Rare"  && [LEVEL] <= 60 && [BASETYPE] == "Jewelry" && [TYPE] == "Amulet" -> [IGNORE]
+[QUALITY] == "Rare"  && [LEVEL] > 59 && [BASETYPE] == "Jewelry"
+//ignore rule
+[QUALITY] == "Rare"  && [LEVEL] <= 59 && [BASETYPE] == "Jewelry"-> [IGNORE]
+
+// bugged rare misc items like followerspecial and polearm
+[QUALITY] == "Rare"  && [LEVEL] > 62 && [BASETYPE] == "Misc"
+//ignore rule
+[QUALITY] == "Rare"  && [LEVEL] <= 62 && [BASETYPE] == "Misc" -> [IGNORE]
+
+// +---------------------------------------------------------------------------+
+// |  _______ _______ _______ _______ ______ 
+// | |   |   |   _   |     __|_     _|      |
+// | |       |       |    |  |_|   |_|   ---|
+// | |__|_|__|___|___|_______|_______|______|                                                                                                   
+// +---------------------------------------------------------------------------+
+//ignore rule
+[QUALITY] == "Magic" -> [IGNORE]

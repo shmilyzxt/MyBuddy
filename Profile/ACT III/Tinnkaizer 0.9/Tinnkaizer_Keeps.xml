@@ -1,0 +1,109 @@
+<Profile>
+    <Name>Tinnkaizer 0.9 - The Keep Depths 2 and 3</Name>
+    <KillMonsters>True</KillMonsters>
+    <PickupLoot>True</PickupLoot>
+    <GameParams quest="101758" step="1" act="A3" difficulty="Inferno" resumeFromSave="True" isPrivate="True" numGames="-1"  />
+    <Order>
+        <!-- Keep Depths 1, 2, 3 Section -->
+        <While condition="(CurrentLevelAreaId != 75436) and (CurrentLevelAreaId != 93103) and (CurrentLevelAreaId != 136448)">
+            <!-- TotD 1 -->
+            <If condition="CurrentLevelAreaId == 80791">
+                <MoveTo questId="101758" stepId="1"  x="1040.822" y="989.6584" z="-9.9" pathPrecision="5" name="WP Double Check" />
+                <UseWaypoint questId="101758" stepId="1" actorId="6442" x="1040.822" y="989.6584" z="-9.9" waypointNumber="2" />
+            </If>
+
+            <!-- FoS/Bridge of Korsikk -->
+            <If condition="(CurrentLevelAreaId == 155048) or (CurrentLevelAreaId == 112565)">
+                <MoveTo questId="101758" stepId="1" x="3452.229" y="609.7181" z="0.3065126" pathPrecision="5" name="WP Double Check" />
+                <UseWaypoint questId="101758" stepId="1" actorId="6442" x="3452.229" y="609.7181" z="0.3065126" waypointNumber="2" />
+            </If>
+
+            <!-- TotC 1 -->
+            <If condition="CurrentLevelAreaId == 119653">
+                <MoveTo questId="101758" stepId="1" x="958.845" y="1097.812" z="-9.899994"  pathPrecision="5" name="WP Double Check" />
+                <UseWaypoint questId="101758" stepId="1" actorId="6442" x="958.845" y="1097.812" z="-9.899994" waypointNumber="2" />
+            </If>
+
+            <!-- AC 1 -->
+            <If condition="CurrentLevelAreaId == 86080">
+                <MoveTo questId="101758" stepId="1" actorId="6442" pathPrecision="5" name="WP Double Check" />
+                <UseWaypoint questId="101758" stepId="1" actorId="6442" waypointNumber="2" />
+            </If>
+
+            <If condition="not ActorExistsAt(6442, Me.Position.X, Me.Position.Y, Me.Position.Z, 100)">
+                <LogMessage message="[Tinnkaizer] Couldn't find any WP, going back to Town" />
+                <While condition="not Me.IsInTown">
+                    <UseTownPortal questId="101758" stepId="1" />
+                </While>
+            </If>
+
+            <If condition="Me.IsInTown">
+                <UseWaypoint questId="101758" stepId="1" actorId="6442" x="402.5403" y="414.342" z="1.5338" waypointNumber="2" />
+            </If>
+        </While>
+
+        <!-- Keep Depths Level 1 -->
+        <If condition="CurrentLevelAreaId == 75436">
+            <While condition="CurrentLevelAreaId != 93103">
+                <UsePortal questId="101758" stepId="1" portalMarkerHash="-1699330855" destinationWorldId="75434" interactRange="20" />
+            </While>
+        </If>
+
+        <!-- Keep Depths Level 2 -->
+        <If condition="CurrentLevelAreaId == 93103">
+            <ToggleTargeting questId="101758" stepId="1" combat="True" looting="True" lootRadius="30" killRadius="20" />
+            <TrinityExploreDungeon questId="101758" stepId="1" until="ExitFound" exitNameHash="-1699330854" boxSize="40" boxTolerance="0.01" timeoutType="GoldInactivity" timeoutValue="60" townPortalOnTimeout="True">
+                <PrioritizeScenes>
+                    <PriorityScene sceneName="Out" pathPrecision="5" />
+                </PrioritizeScenes>
+                <IgnoreScenes>
+                    <IgnoreScene sceneName="Entrance" />
+                    <IgnoreScene sceneName="_N_" />
+                    <IgnoreScene sceneName="_S_" />
+                    <IgnoreScene sceneName="_E_" />
+                    <IgnoreScene sceneName="_W_" />
+                </IgnoreScenes>
+            </TrinityExploreDungeon>
+
+            <If condition="Me.IsInTown">
+                <LogMessage message="[Tinnkaizer] Got stuck in Keep Depths Level 2, moving on..." />
+            </If>
+
+            <!-- Door to Keep Depths Level 3 -->
+            <If condition="not Me.IsInTown">
+                <While condition="CurrentLevelAreaId == 218511 or CurrentLevelAreaId == 93103">
+                    <MoveTo questId="101758" stepId="1" actorId="176001" pathPrecision="15" name="Door to Keep Depths Level 3" />
+                    <UsePortal questId="101758" stepId="1" portalMarkerHash="-1699330854" destinationWorldId="136415" interactRange="20" />
+                </While>
+            </If>
+        </If>
+
+        <!-- Keep Depths Level 3 -->
+        <If condition="CurrentLevelAreaId == 136448">
+            <LogMessage message="[Tinnkaizer] Clearing Keep Depths Level 3 from Entrance to WP" />
+            <TrinityExploreDungeon questId="101758" stepId="1" until="ExitFound" exitNameHash="2102427919" boxSize="40" boxTolerance="0.01" timeoutType="GoldInactivity" timeoutValue="60" townPortalOnTimeout="True">
+                <PrioritizeScenes>
+                    <PriorityScene sceneName="Exit" />
+                </PrioritizeScenes>
+                <IgnoreScenes>
+                    <IgnoreScene sceneName="Entrance" />
+                    <IgnoreScene sceneName="_N_" />
+                    <IgnoreScene sceneName="_S_" />
+                    <IgnoreScene sceneName="_E_" />
+                    <IgnoreScene sceneName="_W_" />
+                </IgnoreScenes>
+            </TrinityExploreDungeon>
+
+            <If condition="Me.IsInTown">
+                <LogMessage message="[Tinnkaizer] Got stuck in Keeps Depth Level 3, moving on..." />
+            </If>
+
+            <If condition="not Me.IsInTown">
+                <!-- Move to WP -->
+                <MoveTo questId="101758" stepId="1" actorId="6442" pathPrecision="5" name="Keep Depths Level 3 WP" />
+            </If>
+        </If>
+
+        <LoadProfile profile="Tinnkaizer.xml" />
+    </Order>
+</Profile>

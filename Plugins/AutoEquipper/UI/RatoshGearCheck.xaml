@@ -1,0 +1,15 @@
+<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Height="107" Width="419" Name="GearCheckControl">
+    <Grid>
+        <Button Content="Close" Height="23" HorizontalAlignment="Left" Margin="12,72,0,0" Name="buttonClose" VerticalAlignment="Top" Width="75" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,46,0,0" Text="Current DPS:" VerticalAlignment="Top" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="218,46,0,0" Text="Current EHP:" VerticalAlignment="Top" />
+        <Label Content="Doenst support passive increases" Height="28" HorizontalAlignment="Left" Margin="12,12,0,0" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="81,43,0,0" VerticalAlignment="Top" Width="120" Name="DamageValue" Grid.ColumnSpan="1" IsReadOnly="True" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="287,43,0,0" VerticalAlignment="Top" Width="120" Name="EHPValue" IsReadOnly="True" />
+    </Grid>
+</UserControl>
